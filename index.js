@@ -88,14 +88,8 @@ app.get('/transactions', function(request, response, next) {
         error: error
       });
     } else {
-      var airTravelTransactions = transactionsResponse.transactions.filter(
-        (x) => { return x.category.some( 
-          (y) => { return y === "Airlines and Aviation Services"; 
-          }); 
-        }
-      );
-      prettyPrintResponse(airTravelTransactions);
-      response.json({error: null, transactions: airTravelTransactions});
+      prettyPrintResponse(transactionsResponse);
+      response.json({error: null, transactions: transactionsResponse});
     }
   });
 });
