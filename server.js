@@ -1,3 +1,22 @@
+// const path = require('path');
+// const express = require('express');
+// const app = express();
+// const PORT = process.env.PORT || 3000;
+// const api = require('./backend/routes');
+
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// app.get('/', (request, response) => {
+//     response.sendFile(__dirname + '/public/index.html'); // For React/Redux
+// });
+
+// app.use('/api', api);
+
+// app.listen(PORT, error => {
+//     error
+//     ? console.error(error)
+//     : console.info(`==> 🌎 Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`);
+// });
 'use strict';
 
 var util = require('util');
@@ -8,13 +27,16 @@ var bodyParser = require('body-parser');
 var moment = require('moment');
 var plaid = require('plaid');
 
-// Plaid sandbox environment setup
-const APP_PORT = "8000";
-const PLAID_CLIENT_ID = "5c37cedb48339d0011601acf";
-const PLAID_SECRET = "ba3a91b90aba2368be1422d4a89128";
-const PLAID_PUBLIC_KEY = "dc14e823249a9b78995fc65b53f0c6";
-const PLAID_PRODUCTS = "transactions";
-const PLAID_ENV = "sandbox";
+var APP_PORT = envvar.number('APP_PORT', 8000);
+var PLAID_CLIENT_ID = envvar.string('PLAID_CLIENT_ID');
+var PLAID_SECRET = envvar.string('PLAID_SECRET');
+var PLAID_PUBLIC_KEY = envvar.string('PLAID_PUBLIC_KEY');
+var PLAID_ENV = envvar.string('PLAID_ENV', 'sandbox');
+
+// PLAID_PRODUCTS is a comma-separated list of products to use when initializing
+// Link. Note that this list must contain 'assets' in order for the app to be
+// able to create and retrieve asset reports.
+var PLAID_PRODUCTS = envvar.string('PLAID_PRODUCTS', 'transactions');
 
 // We store the access_token in memory - in production, store it in a secure
 // persistent data store
@@ -36,7 +58,7 @@ var app = express();
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
-  extended: false,
+  extended: false
 }));
 app.use(bodyParser.json());
 
@@ -88,18 +110,17 @@ app.get('/transactions', function(request, response, next) {
         error: error
       });
     } else {
-      prettyPrintResponse(transactionsResponse);
-      response.json({error: null, transactions: transactionsResponse});
+      var airTravelTransactions = transactionsResponse.transactions.filter(
+        (x) => { return x.category.some( 
+          (y) => { return y === "Airlines and Aviation Services"; 
+          }); 
+        }
+      );
+      prettyPrintResponse(airTravelTransactions);
+      response.json({error: null, transactions: airTravelTransactions});
     }
   });
 });
-
-// var airTravelTransactions = transactionsResponse.transactions.filter(
-//         (x) => { return x.category.some( 
-//           (y) => { return y === "Airlines and Aviation Services"; 
-//           }); 
-//         }
-//       );
 
 
 
@@ -312,3 +333,4 @@ app.post('/set_access_token', function(request, response, next) {
     });
   });
 });
+
