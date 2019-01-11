@@ -8,16 +8,13 @@ var bodyParser = require('body-parser');
 var moment = require('moment');
 var plaid = require('plaid');
 
-var APP_PORT = envvar.number('APP_PORT', 8000);
-var PLAID_CLIENT_ID = envvar.string('PLAID_CLIENT_ID');
-var PLAID_SECRET = envvar.string('PLAID_SECRET');
-var PLAID_PUBLIC_KEY = envvar.string('PLAID_PUBLIC_KEY');
-var PLAID_ENV = envvar.string('PLAID_ENV', 'sandbox');
-
-// PLAID_PRODUCTS is a comma-separated list of products to use when initializing
-// Link. Note that this list must contain 'assets' in order for the app to be
-// able to create and retrieve asset reports.
-var PLAID_PRODUCTS = envvar.string('PLAID_PRODUCTS', 'transactions');
+// Plaid sandbox environment setup
+const APP_PORT = "8000"
+const PLAID_CLIENT_ID = "5c37cedb48339d0011601acf"
+const PLAID_SECRET = "ba3a91b90aba2368be1422d4a89128"
+const PLAID_PUBLIC_KEY = "dc14e823249a9b78995fc65b53f0c6"
+const PLAID_PRODUCTS = "transactions"
+const PLAID_ENV = "sandbox"
 
 // We store the access_token in memory - in production, store it in a secure
 // persistent data store
@@ -102,6 +99,13 @@ app.get('/transactions', function(request, response, next) {
     }
   });
 });
+
+// var airTravelTransactions = transactionsResponse.transactions.filter(
+//         (x) => { return x.category.some( 
+//           (y) => { return y === "Airlines and Aviation Services"; 
+//           }); 
+//         }
+//       );
 
 
 
