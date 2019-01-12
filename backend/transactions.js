@@ -1,5 +1,52 @@
 var util = require('util');
 
+const typeMultipliers = {
+   "airTravel": (9),
+   "carTravel": (7),
+   "utility": (7 / 3 / 15),
+   "grocery": (7 / 3 / 15),
+   "fastFood": (7 / 3 / 15),
+   "resturantOther": (7 / 3 / 15),
+   "shoppingOther": (7 / 3 / 15),
+}
+
+
+function categorizeTransactions(transactionsResponse) {
+  var transactions    = transactionsResponse.transactions;
+  var selectAndTally = (transactions, type, subtypes) => 
+        {
+          return tallyCategory(selectTransactions(transactions, subtypes), type);
+        }
+  result = {
+    airTravel:      selectAndTally(transactions, [["Airlines and Aviation Services"]], "airTravel");
+    carTravel:      selectAndTally(transactions, [["Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses"]], "carTravel");
+    utility:        selectAndTally(transactions, [["Utilities"]], "utility");
+    grocery:        selectAndTally(transactions, [["Supermarkets and Groceries"]], "grocery");
+    fastFood:       selectAndTally(transactions, [["Fast Food"]], "fastFood");
+    resturantOther: selectAndTally(transactions, [["Food and Drink"], ["Fast Food"]], "resturantOther");
+    shoppingOther:  selectAndTally(transactions, [["Shops"], ["Supermarkets and Groceries"]], "shoppingOther");
+  }
+  return result;
+}
+
+// Returns all transactions that have at least one of the given includeTypes in their categories,
+// but none of the excludeTypes.
+function selectTransactions(transactionsResponse, includeTypes, excludeTypes) {
+  excludeTypes = excludeTypes || []
+  return transactionsResponse.transactions.filter(
+    (trans) => { 
+      return (
+        trans.category.some( 
+          (cat) => { includeTypes.some( (includeType) => { return cat === includeType;}); 
+        }) &&
+        trans.category.every( 
+          (cat) => { excludeTypes.some( (excludeType) => { return cat !== excludeType;}); 
+        })
+      ); 
+    }
+  );
+}
+
 //sums the total cost of a category and calculates:
 //   total carbon cost
 //   total dollar amt

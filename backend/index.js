@@ -95,73 +95,63 @@ app.get('/transactions', function(request, response, next) {
 });
 
 
-// app.get('/breakdown/:days', function(request, response, next) {
-//   // Pull transactions for the Item for the last 30 days
-//   var startDate = moment().subtract(request.params.days, 'days').format('YYYY-MM-DD');
-//   var endDate = moment().format('YYYY-MM-DD');
-//   client.getTransactions(ACCESS_TOKEN, startDate, endDate, {
-//     count: 250,
-//     offset: 0,
-//   }, function(error, transactionsResponse) {
-//     if (error != null) {
-//       prettyPrintResponse(error);
-//       return response.json({
-//         error: error
-//       });
-//     } else {
-//       var airTravel = transactionsResponse.transactions.filter(
-//         (x) => { return x.category.some( 
-//           (y) => { return y === "Airlines and Aviation Services"; 
-//           }); 
-//         }
-//       );
-//       var carTravel = transactionsResponse.transactions.filter(
-//         (x) => { return x.category.some( 
-//           (y) => { return (
-//                             y === "Gas Stations" || 
-//                             y === "Car Service" ||
-//                             y === "Limos and Chauffeurs" ||
-//                             y === "Charter Buses"
-//                           );
-//           });
-//         }
-//       );
-//       var utility = transactionsResponse.transactions.filter(
-//         (x) => { return x.category.some( 
-//           (y) => { return y === "Utilities"; 
-//           }); 
-//         }
-//       );
-//       var grocery = transactionsResponse.transactions.filter(
-//         (x) => { return x.category.some( 
-//           (y) => { return y === "Supermarkets and Groceries"; 
-//           }); 
-//         }
-//       );
-//       var resturant = transactionsResponse.transactions.filter(
-//         (x) => { return x.category.some( 
-//           (y) => { return y === "Food and Drink"; 
-//           }); 
-//         }
-//       );
-//       var shoppingOther = transactionsResponse.transactions.filter(
-//         (x) => { 
-//           return x.category.some( (y) => { return y === "Shops"; }) && 
-//                 !x.category.some( (y) => { return y === "Supermarkets and Groceries"; }); 
-//         }
-//       );
-//       response.json({error: null, breakdown: {}});
-//     }
-//   });
-// });
+app.get('/breakdown/:days', function(request, response, next) {
+  // Pull transactions for the Item for the last 30 days
+  var startDate = moment().subtract(request.params.days, 'days').format('YYYY-MM-DD');
+  var endDate = moment().format('YYYY-MM-DD');
+  client.getTransactions(ACCESS_TOKEN, startDate, endDate, {
+    count: 250,
+    offset: 0,
+  }, function(error, transactionsResponse) {
+    if (error != null) {
+      prettyPrintResponse(error);
+      return response.json({
+        error: error
+      });
+    } else {
+      categorizedTransactions = categorizeTransactions(transactionsResponse);
+      response.json({error: null, breakdown: {air: airTravel}});
+    }
+  });
+});
 
-function selectTransactions(transactions, includeTypes, excludeTypes) {
-  var resturant = transactionsResponse.transactions.filter(
-      (x) => { return x.category.some( 
-        (y) => { return () =>y === "Food and Drink"; 
-        }); 
-      }
-    );
+function categorizeTransactions(transactionsResponse) {
+  var transactions    = transactionsResponse.transactions;
+  var airTravel       = selectTransactions(transactions, ["Airlines and Aviation Services"]);
+  var carTravel       = selectTransactions(transactions, ["Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses"]);
+  var utility         = selectTransactions(transactions, ["Utilities"]);
+  var grocery         = selectTransactions(transactions, ["Supermarkets and Groceries"]);
+  var fastFood        = selectTransactions(transactions, ["Fast Food"]);
+  var resturantOther  = selectTransactions(transactions, ["Food and Drink"], ["Fast Food"]);
+  var shoppingOther   = selectTransactions(transactions, ["Shops"], ["Supermarkets and Groceries"]);
+  result = {
+    airTravel:      tallyCategory(airTravel, "airTravel")
+    carTravel:      tallyCategory(carTravel, "carTravel")
+    utility:        tallyCategory(utility, "utility")
+    grocery:        tallyCategory(grocery, "grocery")
+    fastFood:       tallyCategory(fastFood, "fastFood")
+    resturantOther: tallyCategory(resturantOther, "resturantOther")
+    shoppingOther:  tallyCategory(shoppingOther, "shoppingOther")
+  }
+  return result;
+}
+
+// Returns all transactions that have at least one of the given includeTypes in their categories,
+// but none of the excludeTypes.
+function selectTransactions(transactionsResponse, includeTypes, excludeTypes) {
+  excludeTypes = excludeTypes || []
+  return transactionsResponse.transactions.filter(
+    (trans) => { 
+      return (
+        trans.category.some( 
+          (cat) => { includeTypes.some( (includeType) => { return cat === includeType;}); 
+        }) &&
+        trans.category.every( 
+          (cat) => { excludeTypes.some( (excludeType) => { return cat !== excludeType;}); 
+        })
+      ); 
+    }
+  );
 }
 
 
