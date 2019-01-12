@@ -22,11 +22,11 @@
 }
 
 .description {
-  background-color: rgb(169, 95, 209);
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #383D3B;
   text-align: center;
   margin-bottom: -2px;
 }
@@ -61,8 +61,8 @@
   /* overflow: auto; */
 }
 .footerBackground {
-  background-color: orange;
-  color: white;
+  background-color: white;
+  color: #383D3B;
   font-size: 1.1em;
   display: flex;
   justify-content: center;
