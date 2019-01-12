@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from '../../styles/Splash.module.css';
+import styles from '../../styles/Home.module.css';
 import GoogleButton from 'react-google-button';
 // import { Button } from 'reactstrap';
 

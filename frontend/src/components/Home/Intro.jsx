@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from '../../styles/Splash.module.css';
+import styles from '../../styles/Home.module.css';
 
 class Intro extends Component {
   render() {
