@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import styles from '../../styles/Splash.module.css';
+import styles from '../../styles/Home.module.css';
 
 class Intro extends Component {
   render() {
     return (
       <div>
         <div className={styles.title}>
-          <h1>Volunteer Portal</h1>
+          <h1>Volunteer Application</h1>
         </div>
         <div className={styles.description}>
           <div className={styles.descriptionInner}>
