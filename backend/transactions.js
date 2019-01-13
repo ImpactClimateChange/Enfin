@@ -1,7 +1,7 @@
 var util = require('util');
 
 // US dollars required to offset 1 kg^2 of CO2
-const CARBON_COST = .0134;
+const CARBON_COST = .00134;
 
 const CATEGORIES = {
    "airTravel": {
