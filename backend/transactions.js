@@ -1,31 +1,48 @@
 var util = require('util');
 
-const typeMultipliers = {
-   "airTravel": (9),
-   "carTravel": (7),
-   "utility": (7 / 3 / 15),
-   "grocery": (7 / 3 / 15),
-   "fastFood": (7 / 3 / 15),
-   "resturantOther": (7 / 3 / 15),
-   "shoppingOther": (7 / 3 / 15),
+const categories = {
+   "airTravel": {
+      "mult": (9),
+      "includeType": ["Airlines and Aviation Services"]
+  },
+   "carTravel": {
+      "mult": (7),
+      "includeType": ["Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses"]
+  },
+   "utility": {
+      "mult": (7 / 3 / 15),
+      "includeType": ["Utilities"]
+  },
+   "grocery": {
+      "mult": (7 / 3 / 15),
+      "includeType": ["Supermarkets and Groceries"]
+  },
+   "fastFood": {
+      "mult": (7 / 3 / 15),
+      "includeType": ["Fast Food"]
+  },
+   "resturantOther": {
+      "mult": (7 / 3 / 15),
+      "includeType": ["Food and Drink"],
+      "excludeType": ["Fast Food"]
+  },
+   "shoppingOther": {
+      "mult": (7 / 3 / 15),
+      "includeType": ["Shops"],
+      "excludeType": ["Supermarkets and Groceries"]
+  },
 }
 
 
 function categorizeTransactions(transactionsResponse) {
   var transactions    = transactionsResponse.transactions;
-  var selectAndTally = (transactions, type, subtypes) => 
-        {
+  var selectAndTally = (transactions, type, includeType, excludeType) => {
           return tallyCategory(selectTransactions(transactions, subtypes), type);
         }
-  result = {
-    airTravel:      selectAndTally(transactions, [["Airlines and Aviation Services"]], "airTravel");
-    carTravel:      selectAndTally(transactions, [["Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses"]], "carTravel");
-    utility:        selectAndTally(transactions, [["Utilities"]], "utility");
-    grocery:        selectAndTally(transactions, [["Supermarkets and Groceries"]], "grocery");
-    fastFood:       selectAndTally(transactions, [["Fast Food"]], "fastFood");
-    resturantOther: selectAndTally(transactions, [["Food and Drink"], ["Fast Food"]], "resturantOther");
-    shoppingOther:  selectAndTally(transactions, [["Shops"], ["Supermarkets and Groceries"]], "shoppingOther");
-  }
+  var result = {}
+  categories.forEach((category) => {
+    result[category["type"]] = selectAndTally(transactions, category["type"], category["includeType"], category["excludeType"]);
+  });
   return result;
 }
 
@@ -52,28 +69,13 @@ function selectTransactions(transactionsResponse, includeTypes, excludeTypes) {
 //   total dollar amt
 //   + same list of transactions
 function tallyCategory (transactions, category) {
-    totalCurrencyAmt = 0;
-    totalCarbonAmt = 0;
+    var totalCurrencyAmt = 0;
     transactions.forEach(
         (x) => {
             totalCurrencyAmt += x.amount;
         }
     )
-    if(category === 'airline') { // airline
-        totalCarbonAmt = totalCurrencyAmt*9 //arbitrary value
-    }
-    if(category === 'car') { // car
-        totalCarbonAmt = totalCurrencyAmt*7 //arbitrary value
-    }
-    if(category === 'grocery') { // grocery
-        totalCarbonAmt = totalCurrencyAmt*7/3/15 //arbitrary value
-    }
-    if(category === 'restaurant') { //restaurant
-        totalCarbonAmt = totalCurrencyAmt*7/3/15 //arbitrary value
-    }
-    if(category === 'other') { //shopping
-        totalCarbonAmt = totalCurrencyAmt*7/3/15 //arbitrary value
-    }
+    var totalCurrencyAmt = typeMultipliers["category"] * totalCurrencyAmt;
     return {
         "totalCurrency": totalCurrencyAmt,
         "totalCarbon": totalCarbonAmt,
