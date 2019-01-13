@@ -9,7 +9,7 @@ const CATEGORIES = {
    "carTravel": {
       "mult": (7),
       "includeTypes": ["Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses"],
-      "excludeTypes": []
+      "excludeTypes": ["Shops"]
   },
    "utility": {
       "mult": (7 / 3 / 15),
@@ -39,7 +39,7 @@ const CATEGORIES = {
   "other": {
       "mult": (7 / 3 / 15),
       "includeTypes": ["*"],
-      "excludeTypes": ["Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses","Utilities","Supermarkets and Groceries","Fast Food","Food and Drink","Shops"]
+      "excludeTypes": ["Airlines and Aviation Services", "Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses","Utilities","Supermarkets and Groceries","Fast Food","Food and Drink","Shops"]
   }
 }
 
@@ -64,8 +64,8 @@ function selectTransactions(transactions, includeTypes, excludeTypes) {
     (trans) => {
       return (
         trans.category.some(
-          (cat) => { 
-            return (includeTypes[0] === "*" || 
+          (cat) => {
+            return (includeTypes[0] === "*" ||
               includeTypes.some( (includeType) => {
               return cat === includeType;
           }));
@@ -695,4 +695,8 @@ trans = [
         "unofficial_currency_code": null
       }];
 hash = {"transactions": trans};
-console.log(categorizeTransactions(hash));
+x = categorizeTransactions(hash);
+// Object.keys(x).forEach( (key) => {
+//     x[key]['transactions'].forEach((t) => console.log(t['category'], ":", t['name']))
+// } )
+console.log(x)
