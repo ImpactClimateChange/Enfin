@@ -1,7 +1,7 @@
 var util = require('util');
 
 // US dollars required to offset 1 kg^2 of CO2
-const CARBON_COST = 1.37;
+const CARBON_COST = .0134;
 
 const CATEGORIES = {
    "airTravel": {
@@ -42,7 +42,7 @@ const CATEGORIES = {
   "other": {
       "mult": (7 / 3 / 15),
       "includeTypes": ["*"],
-      "excludeTypes": ["Airlines and Aviation Services", "Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses","Utilities","Supermarkets and Groceries","Fast Food","Food and Drink","Shops"]
+      "excludeTypes": ["Airlines and Aviation Services", "Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses","Utilities","Supermarkets and Groceries","Fast Food","Food and Drink","Shops","Transfer","Payment"]
   }
 }
 
@@ -91,7 +91,9 @@ function tallyCategory (transactions, category) {
     var cost = 0;
     transactions.forEach(
         (x) => {
+          if (x.amount > 0) {
             cost += x.amount;
+          }
         }
     )
     var emissions = CATEGORIES[category]['mult'] * cost;
