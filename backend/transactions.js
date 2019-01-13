@@ -1,35 +1,40 @@
 var util = require('util');
 
-const categories = {
+const CATEGORIES = {
    "airTravel": {
       "mult": (9),
-      "includeType": ["Airlines and Aviation Services"]
+      "includeTypes": ["Airlines and Aviation Services"],
+      "excludeTypes": []
   },
    "carTravel": {
       "mult": (7),
-      "includeType": ["Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses"]
+      "includeTypes": ["Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses"],
+      "excludeTypes": []
   },
    "utility": {
       "mult": (7 / 3 / 15),
-      "includeType": ["Utilities"]
+      "includeTypes": ["Utilities"],
+      "excludeTypes": []
   },
    "grocery": {
       "mult": (7 / 3 / 15),
-      "includeType": ["Supermarkets and Groceries"]
+      "includeTypes": ["Supermarkets and Groceries"],
+      "excludeTypes": []
   },
    "fastFood": {
       "mult": (7 / 3 / 15),
-      "includeType": ["Fast Food"]
+      "includeTypes": ["Fast Food"],
+      "excludeTypes": []
   },
    "resturantOther": {
       "mult": (7 / 3 / 15),
-      "includeType": ["Food and Drink"],
-      "excludeType": ["Fast Food"]
+      "includeTypes": ["Food and Drink"],
+      "excludeTypes": ["Fast Food"]
   },
    "shoppingOther": {
       "mult": (7 / 3 / 15),
-      "includeType": ["Shops"],
-      "excludeType": ["Supermarkets and Groceries"]
+      "includeTypes": ["Shops"],
+      "excludeTypes": ["Supermarkets and Groceries"]
   },
 }
 
@@ -40,16 +45,15 @@ function categorizeTransactions(transactionsResponse) {
           return tallyCategory(selectTransactions(transactions, subtypes), type);
         }
   var result = {}
-  categories.forEach((category) => {
-    result[category["type"]] = selectAndTally(transactions, category["type"], category["includeType"], category["excludeType"]);
+  CATEGORIES.forEach((category) => {
+    result[category["type"]] = selectAndTally(transactions, category["type"], category["includeTypes"], category["excludeTypes"]);
   });
   return result;
 }
 
-// Returns all transactions that have at least one of the given includeTypes in their categories,
+// Returns all transactions that have at least one of the given includeTypes in their category list,
 // but none of the excludeTypes.
 function selectTransactions(transactionsResponse, includeTypes, excludeTypes) {
-  excludeTypes = excludeTypes || []
   return transactionsResponse.transactions.filter(
     (trans) => { 
       return (
