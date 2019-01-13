@@ -58,10 +58,10 @@ function selectTransactions(transactionsResponse, includeTypes, excludeTypes) {
     (trans) => { 
       return (
         trans.category.some( 
-          (cat) => { includeTypes.some( (includeType) => { return cat === includeType;}); 
+          (cat) => { includeTypes.some( (includeType) => { return cat === includeType; }); 
         }) &&
         trans.category.every( 
-          (cat) => { excludeTypes.some( (excludeType) => { return cat !== excludeType;}); 
+          (cat) => { excludeTypes.some( (excludeType) => { return cat !== excludeType; }); 
         })
       ); 
     }
