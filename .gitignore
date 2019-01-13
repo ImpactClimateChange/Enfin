@@ -44,6 +44,9 @@ public/bundle.js
 # Dependency directories
 node_modules
 jspm_packages/
+package-lock.json
+frontend/package-lock.json
+backend/package-lock.json
 
 # Typescript v1 declaration files
 typings/
