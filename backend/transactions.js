@@ -52,22 +52,20 @@ function selectTransactions(transactions, includeTypes, excludeTypes) {
   excludeTypes = excludeTypes || []
   return transactions.filter(
     (trans) => {
-      x = (
+      return (
         trans.category.some(
-          (cat) => { includeTypes.some( (includeType) => {
-              // if(includeType === cat) console.log("Found an include match with:", trans['name'], cat);
+          (cat) => { return includeTypes.some( (includeType) => {
               return cat === includeType;
           });
-        // }) &&
-        // trans.category.every(
-        //   (cat) => { excludeTypes.every( (excludeType) => {
-        //       if(excludeType === cat) console.log("Found a exclude match with:", trans['name'], cat);
-        //       return cat !== excludeType;
-        //   });
+        }) &&
+        trans.category.every(
+          (cat) => { return excludeTypes.every( (excludeType) => {
+              if(excludeType === cat) console.log("Found a exclude match with:", trans['name'], cat);
+              return cat !== excludeType;
+          });
         })
       );
-      console.log(x);
-      return x;
+      // console.log(x);
     }
   );
 }
@@ -85,8 +83,8 @@ function tallyCategory (transactions, category) {
     )
     var emissions = CATEGORIES[category]['mult'] * cost;
     return {
-        "totalCurrency": cost,
-        "totalCarbon": emissions,
+        "cost": cost,
+        "emissions": emissions,
         "transactions": transactions
     };
 }
