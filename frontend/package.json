@@ -19,6 +19,7 @@
     "history": "^4.7.2",
     "node-sass": "^4.11.0",
     "prop-types": "^15.6.2",
+    "rc-progress": "^2.2.6",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-google-button": "^0.5.3",

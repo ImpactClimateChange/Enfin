@@ -6,6 +6,7 @@ import AcceptPolicies from './AcceptPolicies';
 import Authenticated from './Authenticated';
 import VolunteerDash from './VolunteerDash';
 import AdminDash from './AdminDash';
+import Home from './Home';
 
 export {
   VolunteerApp,
@@ -15,5 +16,6 @@ export {
   AcceptPolicies,
   Authenticated,
   VolunteerDash,
-  AdminDash
+  AdminDash,
+  Home
 };
