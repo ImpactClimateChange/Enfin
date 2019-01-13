@@ -21,6 +21,10 @@
   font-weight: bold;
 }
 
+.backgroundimg {
+  background-image: url(../images/sebastian-unrau-47679-unsplash.jpg);
+}
+
 .description {
   background-color: white;
   display: flex;
@@ -29,12 +33,14 @@
   color: #383D3B;
   text-align: center;
   margin-bottom: -2px;
+  
 }
 .descriptionInner {
   line-height: 2em;
   margin: 1em;
   width: 60%;
   font-size: 1.1em;
+  color: #383D3B;
 }
 .descriptionInner h1 {
   margin: 1em;

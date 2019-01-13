@@ -28,7 +28,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <Navbar color="white" white expand="md">
+        <Navbar color="white" expand="md">
           <NavbarBrand tag={Link} to="/">
             <img style={{ width: '120px' }} alt="drawchange logo" src={logo} />
           </NavbarBrand>

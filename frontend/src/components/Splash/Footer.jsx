@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styles from '../../styles/Home.module.css';
-import { Button } from 'reactstrap';
 
 class Footer extends Component {
   render() {
@@ -14,9 +13,7 @@ class Footer extends Component {
               </p>
             </div>
           </div>
-          <div>
-            <Button outline color='primary'>SIGN UP</Button>{' '}
-          </div>
+          
         </div>
       </div>
     );
