@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import styles from '../../styles/Home.module.css';
 import Flexbox from "flexbox-react";
 import Progress from './Progress';
+import ImpactStatement from './ImpactStatement'
 
 class Home extends Component {
   render() {
@@ -14,7 +15,7 @@ class Home extends Component {
           <Flexbox element="header" height="60px">
             Emissions
           </Flexbox>
-          <Flexbox>Impact</Flexbox>
+          <Flexbox><ImpactStatement /></Flexbox>
         </Flexbox>
       </div>
     );
