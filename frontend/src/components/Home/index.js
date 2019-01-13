@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Flexbox from "flexbox-react";
 import Progress from './Progress';
 import TimeRange from './TimeRange';
+import ImpactStatement from './ImpactStatement'
 
 class Home extends Component {
   constructor() {
@@ -44,7 +45,7 @@ class Home extends Component {
           <Flexbox element="header" height="60px">
             Emissions
           </Flexbox>
-          <Flexbox>Impact</Flexbox>
+          <Flexbox><ImpactStatement /></Flexbox>
         </Flexbox>
       </div>
     );
