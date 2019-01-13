@@ -115,47 +115,6 @@ app.get('/breakdown/:days', function(request, response, next) {
   });
 });
 
-function categorizeTransactions(transactionsResponse) {
-  var transactions    = transactionsResponse.transactions;
-  var airTravel       = selectTransactions(transactions, ["Airlines and Aviation Services"]);
-  var carTravel       = selectTransactions(transactions, ["Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses"]);
-  var utility         = selectTransactions(transactions, ["Utilities"]);
-  var grocery         = selectTransactions(transactions, ["Supermarkets and Groceries"]);
-  var fastFood        = selectTransactions(transactions, ["Fast Food"]);
-  var resturantOther  = selectTransactions(transactions, ["Food and Drink"], ["Fast Food"]);
-  var shoppingOther   = selectTransactions(transactions, ["Shops"], ["Supermarkets and Groceries"]);
-  result = {
-    airTravel:      tallyCategory(airTravel, "airTravel")
-    carTravel:      tallyCategory(carTravel, "carTravel")
-    utility:        tallyCategory(utility, "utility")
-    grocery:        tallyCategory(grocery, "grocery")
-    fastFood:       tallyCategory(fastFood, "fastFood")
-    resturantOther: tallyCategory(resturantOther, "resturantOther")
-    shoppingOther:  tallyCategory(shoppingOther, "shoppingOther")
-  }
-  return result;
-}
-
-// Returns all transactions that have at least one of the given includeTypes in their categories,
-// but none of the excludeTypes.
-function selectTransactions(transactionsResponse, includeTypes, excludeTypes) {
-  excludeTypes = excludeTypes || []
-  return transactionsResponse.transactions.filter(
-    (trans) => { 
-      return (
-        trans.category.some( 
-          (cat) => { includeTypes.some( (includeType) => { return cat === includeType;}); 
-        }) &&
-        trans.category.every( 
-          (cat) => { excludeTypes.some( (excludeType) => { return cat !== excludeType;}); 
-        })
-      ); 
-    }
-  );
-}
-
-
-
 
 // Retrieve Identity for an Item
 // https://plaid.com/docs/#identity
