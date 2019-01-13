@@ -51,7 +51,7 @@ function categorizeTransactions(transactionsResponse) {
   var result = {}
 
   Object.keys(CATEGORIES).forEach((category) => {
-    result[category] = selectAndTally(transactions, category, CATEGORIES[category]["includeType"], CATEGORIES[category]["excludeType"]);
+    result[category] = selectAndTally(transactions, category, CATEGORIES[category]["includeTypes"], CATEGORIES[category]["excludeTypes"]);
   });
   return result;
 }
@@ -64,9 +64,11 @@ function selectTransactions(transactions, includeTypes, excludeTypes) {
     (trans) => {
       return (
         trans.category.some(
-          (cat) => { return includeTypes.some( (includeType) => {
+          (cat) => { 
+            return (includeTypes[0] === "*" || 
+              includeTypes.some( (includeType) => {
               return cat === includeType;
-          });
+          }));
         }) &&
         trans.category.every(
           (cat) => { return excludeTypes.every( (excludeType) => {
@@ -98,7 +100,8 @@ function tallyCategory (transactions, category) {
 }
 
 
-trans = [{
+trans = [
+  {
         "account_id": "837QRePe5qCeBQ1ZvjoEc18aNWGGMeTwBlkvv",
         "account_owner": null,
         "amount": 500,
