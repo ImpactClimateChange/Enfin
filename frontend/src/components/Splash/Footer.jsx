@@ -8,7 +8,7 @@ class Footer extends Component {
         <div className={styles.footerBackground}>
           <div>
             <div className={styles.footer}>
-              <p>contact info here</p>
+              <p>© 2019 Enfin</p>
             </div>
           </div>
           
