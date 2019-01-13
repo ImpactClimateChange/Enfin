@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { Header, Authenticated, Splash, Home } from './components';
 
 class App extends Component {
@@ -15,11 +15,13 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Header />
-          {this.state.user ? (
+          {/* {this.state.user ? (
             <Authenticated user={this.state.user} />
           ) : (
             <Home onAuth={this.fakeAuth} />
-          )}
+          )} */}
+          <Route exact path="/" component={Splash} />
+          <Route path="/home" component={Home} />
         </div>
       </BrowserRouter>
     );

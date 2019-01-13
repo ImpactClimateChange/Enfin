@@ -34,12 +34,12 @@ class Progess extends Component {
 
   offsetIncrease() {
     const offsetPercent = this.state.offsetPercent + 1;
-    if (offsetPercent >= 61) {
-      clearTimeout(this.tm);
+    if (offsetPercent >= 31) {
+      clearTimeout(this.to);
       return;
     }
     this.setState({ offsetPercent });
-    this.tm = setTimeout(this.offsetIncrease, 5);
+    this.to = setTimeout(this.offsetIncrease, 5);
   }
 
   render() {
