@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 import logo from '../images/logo.png';
 import styles from '../styles/Header.module.css';
@@ -42,7 +34,9 @@ class Header extends Component {
                 <NavLink href="index.js">RESEARCH</NavLink>
               </NavItem>
               <NavItem className={styles.navItem}>
-                <Button outline color='primary'>SIGN IN</Button>{' '}
+                <Button outline color="primary" href="/home">
+                  SIGN IN
+                </Button>
               </NavItem>
             </Nav>
           </Collapse>
