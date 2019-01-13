@@ -1,4 +1,4 @@
-# drawchange Volunteer & Event Management System
+# Enfin Environmental Finance Service
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![CircleCI](https://circleci.com/gh/GTBitsOfGood/drawchange.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/GTBitsOfGood/drawchange)
@@ -7,4 +7,4 @@
 
 ## Overview
 
-This portal is meant to be used by Atlanta nonprofit [drawchange](http://www.drawchange.org) to manage their volunteers and events. New volunteers will register an account, be vetted by an administrator, then sign up for volunteer events through this portal.
+This is a Environmental Finance service that allows individuals to track their carbon footprint. 
