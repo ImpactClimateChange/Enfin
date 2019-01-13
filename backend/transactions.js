@@ -31,13 +31,17 @@ const CATEGORIES = {
       "includeTypes": ["Food and Drink"],
       "excludeTypes": ["Fast Food"]
   },
-   "shoppingOther": {
+   "shopping": {
       "mult": (7 / 3 / 15),
       "includeTypes": ["Shops"],
       "excludeTypes": ["Supermarkets and Groceries"]
   },
+  "other": {
+      "mult": (7 / 3 / 15),
+      "includeTypes": ["*"],
+      "excludeTypes": ["Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses","Utilities","Supermarkets and Groceries","Fast Food","Food and Drink","Shops"]
+  }
 }
-
 
 function categorizeTransactions(transactionsResponse) {
   var transactions  = transactionsResponse.transactions;
@@ -54,19 +58,22 @@ function categorizeTransactions(transactionsResponse) {
 
 // Returns all transactions that have at least one of the given includeTypes in their category list,
 // but none of the excludeTypes.
-function selectTransactions(transactionsResponse, includeTypes, excludeTypes) {
-  return transactionsResponse.transactions.filter(
-    (trans) => { 
+function selectTransactions(transactions, includeTypes, excludeTypes) {
+  excludeTypes = excludeTypes || []
+  return transactions.filter(
+    (trans) => {
       return (
-        trans.category.some( 
-          (cat) => { includeTypes.some( (includeType) => { return cat === includeType; }); 
+        trans.category.some(
+          (cat) => { return includeTypes.some( (includeType) => {
+              return cat === includeType;
+          });
         }) &&
-        trans.category.every( 
-          (cat) => { excludeTypes.some( (excludeType) => { return cat !== excludeType; }); 
+        trans.category.every(
+          (cat) => { return excludeTypes.every( (excludeType) => {
+              return cat !== excludeType;
+          });
         })
       );
-      console.log(x);
-      return x;
     }
   );
 }
@@ -84,8 +91,8 @@ function tallyCategory (transactions, category) {
     )
     var emissions = CATEGORIES[category]['mult'] * cost;
     return {
-        "totalCurrency": cost,
-        "totalCarbon": emissions,
+        "cost": cost,
+        "emissions": emissions,
         "transactions": transactions
     };
 }
