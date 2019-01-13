@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import styles from '../../styles/Home.module.css';
+// import styles from '../../styles/Splash.module.css';
 import Intro from './Intro';
 import Footer from './Footer';
 // import { IMAGES } from '../../images/volunteer_app/images.js';
@@ -9,7 +9,7 @@ class Splash extends Component {
     return (
       <div>
         <Intro />
-        <Footer/>
+        <Footer />
       </div>
     );
   }

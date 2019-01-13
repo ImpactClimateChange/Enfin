@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-
-import { Header, Authenticated, Splash } from './components';
+import { Header, Authenticated, Splash, Home } from './components';
 
 class App extends Component {
   state = { user: null };
