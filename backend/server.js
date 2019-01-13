@@ -129,7 +129,12 @@ app.get('/breakdown/:days', function(request, response, next) {
       });
     } else {
       const categorizedTransactions = transactions.categorizeTransactions(transactionsResponse);
-      response.json({error: null, breakdown: categorizedTransactions});
+      const cost = Object.keys(categorizedTransactions).reduce(
+          (acc, key) => {return acc + categorizedTransactions[key]['cost']}, 0);
+      const emission = Object.keys(categorizedTransactions).reduce(
+          (acc, key) => {return acc + categorizedTransactions[key]['emissions']}, 0);
+      const offset = transactions.offsetCost(emission);
+      response.json({error: null, cost: cost, emission: emission, offset: offset, breakdown: categorizedTransactions});
     }
   });
 });
