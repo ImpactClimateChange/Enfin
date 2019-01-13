@@ -11,10 +11,10 @@ class Home extends Component {
           <Progress />
         </div>
         <Flexbox minHeight="100vh" justifyContent="space-around">
-          <Flexbox element="header" height="60px">
+          <Flexbox element="header" flexGrow={2} height="60px">
             Emissions
           </Flexbox>
-          <Flexbox>Impact</Flexbox>
+          <Flexbox flexGrow={1}>Impact</Flexbox>
         </Flexbox>
       </div>
     );
