@@ -1,5 +1,8 @@
 var util = require('util');
 
+// US dollars required to offset 1 kg^2 of CO2
+const CARBON_COST = 1.37;
+
 const CATEGORIES = {
    "airTravel": {
       "mult": (9),
@@ -99,4 +102,8 @@ function tallyCategory (transactions, category) {
     };
 }
 
-module.exports = {categorizeTransactions};
+function offsetCost(emission) {
+  return emission * CARBON_COST;
+}
+
+module.exports = {categorizeTransactions, offsetCost};
