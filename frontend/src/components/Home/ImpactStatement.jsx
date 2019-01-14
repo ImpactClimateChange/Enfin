@@ -13,8 +13,6 @@ class ImpactStatement extends Component {
   constructor() {
     super();
     this.state = {
-      days: 30,
-      emissions: 9000
     };
   }
 
@@ -25,15 +23,15 @@ class ImpactStatement extends Component {
       <div style={{ margin: 20 }}>
         <h3>Your Carbon Impact</h3>
         <p>
-          In the last {this.state.days} days, your spending has caused{' '}
-          <b>{this.state.emissions} kg of CO2 emissions.</b>
+          In the last {Math.round(this.props.timeRange)} days, your spending has caused{' '}
+          <b>{Math.round(this.props.emissions)} kg of CO2 emissions.</b>
         </p>
         <p>That's equivalent to: </p>
         <ul>
-          <li>Cutting down {EMISSIONS_TO_RESOURCE["tree"] * this.state.emissions} trees.</li>
-          <li>Powering New York City for {EMISSIONS_TO_RESOURCE["nyc_seconds"] * this.state.emissions} seconds.</li>
-          <li>Powering {EMISSIONS_TO_RESOURCE["lightbulb_years"] * this.state.emissions} lightbulbs continuously for a year.</li>
-          <li>Driving an average car {EMISSIONS_TO_RESOURCE["car_miles"] * this.state.emissions} miles.</li>
+          <li>Cutting down {Math.round(EMISSIONS_TO_RESOURCE["tree"] * this.props.emissions)} trees.</li>
+          <li>Powering New York City for {Math.floor(EMISSIONS_TO_RESOURCE["nyc_seconds"] * this.props.emissions)} seconds.</li>
+          <li>Powering {Math.round(EMISSIONS_TO_RESOURCE["lightbulb_years"] * this.props.emissions)} lightbulbs continuously for a year.</li>
+          <li>Driving an average car {Math.round(EMISSIONS_TO_RESOURCE["car_miles"] * this.props.emissions)} miles.</li>
         </ul>
       </div>
     );

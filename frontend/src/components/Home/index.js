@@ -50,7 +50,7 @@ class Home extends Component {
             Emissions
           </Flexbox>
           <Flexbox>
-            <ImpactStatement />
+            <ImpactStatement emissions={this.state.emissions} offset={this.state.offset} timeRange={this.state.timeRange}/>
           </Flexbox>
         </Flexbox>
       </div>

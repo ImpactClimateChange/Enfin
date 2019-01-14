@@ -61,7 +61,7 @@ class Progess extends Component {
             </Col>
             <Col md={1}>
               <div className={styles.percent}>
-                <p>{Math.floor(this.state.emissionsPercent*(this.props.emissions+this.props.offset))}</p>
+                <p>{Math.floor(this.state.emissionsPercent*(this.props.emissions+this.props.offset)/100)}</p>
               </div>
             </Col>
           </Row>
@@ -80,7 +80,7 @@ class Progess extends Component {
             </Col>
             <Col md={1}>
               <div className={styles.percent}>
-                <p>{Math.floor(this.state.offsetPercent*(this.props.emissions+this.props.offset))}</p>
+                <p>{Math.floor(this.state.offsetPercent*(this.props.emissions+this.props.offset)/100)}</p>
               </div>
             </Col>
           </Row>
