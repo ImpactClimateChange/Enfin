@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from '../../styles/Home.module.css';
 
+
 //amount of resource equivalent to 1 kg carbon emission
 const EMISSIONS_TO_RESOURCE = {
   "tree": (1 / 500), //1 tree life == 500 kg carbon sequestration
@@ -28,11 +29,13 @@ class ImpactStatement extends Component {
         </p>
         <p>That's equivalent to: </p>
         <ul>
-          <li>Cutting down {Math.round(EMISSIONS_TO_RESOURCE["tree"] * this.props.emissions)} trees.</li>
-          <li>Powering New York City for {Math.floor(EMISSIONS_TO_RESOURCE["nyc_seconds"] * this.props.emissions)} seconds.</li>
-          <li>Powering {Math.round(EMISSIONS_TO_RESOURCE["lightbulb_years"] * this.props.emissions)} lightbulbs continuously for a year.</li>
-          <li>Driving an average car {Math.round(EMISSIONS_TO_RESOURCE["car_miles"] * this.props.emissions)} miles.</li>
+          <li>Keeping {Math.round(EMISSIONS_TO_RESOURCE["lightbulb_years"] * this.props.emissions)} lightbulbs continuously on for a year</li>
+          <li>Powering New York City for {(EMISSIONS_TO_RESOURCE["nyc_seconds"] * this.props.emissions).toFixed(2)} seconds</li>
+          <li>Driving an average car {Math.round(EMISSIONS_TO_RESOURCE["car_miles"] * this.props.emissions)} miles</li>
         </ul>
+        <p>Planting {Math.round(EMISSIONS_TO_RESOURCE["tree"] * this.props.emissions)} trees would entirely absorb these carbon emissions. <b>Take action now!</b></p>
+        <button onClick={() => {console.log("REDUCE!")}}>Reduce Your Carbon Footprint</button>      <button onClick={() => {console.log("REDUCE!")}}>Offset Your Carbon Footprint</button>
+        
       </div>
     );
   }
