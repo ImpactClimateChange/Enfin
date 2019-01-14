@@ -3,10 +3,10 @@ import styles from '../../styles/Home.module.css';
 import Flexbox from 'flexbox-react';
 import Progress from './Progress';
 import BubbleChart from './BubbleChart';
-import BarGraph from './BarGraph';
 import TimeRange from './TimeRange';
 import ImpactStatement from './ImpactStatement';
 import { runInThisContext } from 'vm';
+import BarChart from './BarChart';
 
 class Home extends Component {
   constructor() {
@@ -53,9 +53,9 @@ class Home extends Component {
             Emissions
             {/* <BubbleChart emmissions = {this.state.emissions} breakdown = {this.state.breakdown} /> */}
             {/* <BarGraph data={[5,10,1,3,6,7,8, 1100]} size={[500,500]} /> */}
-            <BarGraph data={
+            {/* <BarChart data={
               Object.keys(this.state.breakdown).map((category) =>
-              {return(this.state.breakdown[category]['emissions'])})} size={[500,500]}/>
+              {return(this.state.breakdown[category]['emissions'])})} size={[500,500]}/> */}
           </Flexbox>
           <Flexbox>
             <ImpactStatement />
