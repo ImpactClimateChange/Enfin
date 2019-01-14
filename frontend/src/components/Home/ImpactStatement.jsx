@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'reactstrap';
 import styles from '../../styles/Home.module.css';
 
 
@@ -11,14 +12,6 @@ const EMISSIONS_TO_RESOURCE = {
 }
 
 class ImpactStatement extends Component {
-  constructor() {
-    super();
-    this.state = {
-    };
-  }
-
-  componentDidMount() {}
-
   render() {
     return (
       <div style={{ margin: 20 }}>
@@ -33,8 +26,8 @@ class ImpactStatement extends Component {
           <li>Powering New York City for {(EMISSIONS_TO_RESOURCE["nyc_seconds"] * this.props.emissions).toFixed(2)} seconds</li>
           <li>Driving an average car {Math.round(EMISSIONS_TO_RESOURCE["car_miles"] * this.props.emissions)} miles</li>
         </ul>
-        <p>Planting {Math.round(EMISSIONS_TO_RESOURCE["tree"] * this.props.emissions)} trees would entirely absorb these carbon emissions. <b>Take action now!</b></p>
-        <button onClick={() => {console.log("REDUCE!")}}>Reduce Your Carbon Footprint</button>      <button onClick={() => {console.log("REDUCE!")}}>Offset Your Carbon Footprint</button>
+        <p>Planting {Math.round(EMISSIONS_TO_RESOURCE["tree"] * this.props.emissions)} trees would entirely absorb these carbon emissions. <br/> <b>Take action now!</b></p>
+        <Button outline color="primary" onClick={() => {console.log("REDUCE!")}}>Reduce Your Carbon Footprint</Button>      <Button outline color="primary" onClick={() => {console.log("REDUCE!")}}>Offset Your Carbon Footprint</Button>
         
       </div>
     );
