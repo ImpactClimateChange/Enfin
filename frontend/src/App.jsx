@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Header, Authenticated, Splash, Home, About} from './components';
+import { Methodology } from './components'
 
 class App extends Component {
   state = { user: null };
@@ -23,6 +24,7 @@ class App extends Component {
           <Route exact path="/" component={Splash} />
           <Route path="/home" component={Home} />
           <Route path="/about" component={About} />
+          <Route path="/methodology" component={Methodology} />
         </div>
       </BrowserRouter>
     );
