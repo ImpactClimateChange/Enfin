@@ -43,7 +43,7 @@ class Home extends Component {
         </div>
 
         <div>
-          <Progress />
+          <Progress emissions={this.state.emissions} offset={this.state.offset}/>
         </div>
         <Flexbox minHeight="100vh" justifyContent="space-around">
           <Flexbox element="header" height="60px">
