@@ -16,26 +16,26 @@ class ImpactStatement extends Component {
       <div style={{ margin: 20 }}>
         <h3>Your Carbon Impact</h3>
         <p>
-          In the last {Math.round(this.props.timeRange)} days, your spending has caused
+          In the last {Math.round(this.props.timeRange)} days, your spending has caused{' '}
           <b>{Math.round(this.props.emissions)} kg of CO2 emissions.</b>
         </p>
         <p>That's equivalent to: </p>
         <ul>
           <li>
-            Keeping {Math.round(EMISSIONS_TO_RESOURCE['lightbulb_years'] * this.props.emissions)}
+            Keeping {Math.round(EMISSIONS_TO_RESOURCE['lightbulb_years'] * this.props.emissions)}{' '}
             lightbulbs continuously on for a year
           </li>
           <li>
-            Powering New York City for
+            Powering New York City for{' '}
             {(EMISSIONS_TO_RESOURCE['nyc_seconds'] * this.props.emissions).toFixed(2)} seconds
           </li>
           <li>
-            Driving an average car
+            Driving an average car{' '}
             {Math.round(EMISSIONS_TO_RESOURCE['car_miles'] * this.props.emissions)} miles
           </li>
         </ul>
         <p>
-          Planting {Math.round(EMISSIONS_TO_RESOURCE['tree'] * this.props.emissions)} trees would
+          Planting {Math.round(EMISSIONS_TO_RESOURCE['tree'] * this.props.emissions)} trees would{' '}
           entirely absorb these carbon emissions. <br /> <b>Take action now!</b>
         </p>
         <Button
