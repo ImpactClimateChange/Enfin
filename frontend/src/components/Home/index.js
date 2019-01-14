@@ -6,7 +6,7 @@ import Progress from './Progress';
 import TimeRange from './TimeRange';
 import ImpactStatement from './ImpactStatement';
 // import { runInThisContext } from 'vm';
-// import BarChart from './BarChart';
+import BarChart from './BarChart';
 
 class Home extends Component {
   constructor() {
