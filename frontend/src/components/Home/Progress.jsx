@@ -23,8 +23,9 @@ class Progess extends Component {
   }
 
   emissionsIncrease() {
-    const emissionsPercent = this.state.emissionsPercent + 1;
-    if (emissionsPercent >= 61) {
+    const emissionsPercent = (this.props.emissions !== 0) ? this.state.emissionsPercent + 1 : 0;
+    const pct = this.props.emissions / (this.props.emissions + this.props.offset) * 100;
+    if (emissionsPercent >= pct) {
       clearTimeout(this.tm);
       return;
     }
@@ -33,8 +34,9 @@ class Progess extends Component {
   }
 
   offsetIncrease() {
-    const offsetPercent = this.state.offsetPercent + 1;
-    if (offsetPercent >= 31) {
+    const offsetPercent = (this.props.offset !== 0) ? this.state.offsetPercent + 1 : 0;
+    const pct = this.props.offset / (this.props.emissions + this.props.offset) * 100;
+    if (offsetPercent >= pct) {
       clearTimeout(this.to);
       return;
     }
@@ -59,7 +61,7 @@ class Progess extends Component {
             </Col>
             <Col md={1}>
               <div className={styles.percent}>
-                <p>{this.state.emissionsPercent}</p>
+                <p>{Math.floor(this.state.emissionsPercent*(this.props.emissions+this.props.offset)/100)}</p>
               </div>
             </Col>
           </Row>
@@ -78,7 +80,7 @@ class Progess extends Component {
             </Col>
             <Col md={1}>
               <div className={styles.percent}>
-                <p>{this.state.offsetPercent}</p>
+                <p>{Math.floor(this.state.offsetPercent*(this.props.emissions+this.props.offset)/100)}</p>
               </div>
             </Col>
           </Row>
