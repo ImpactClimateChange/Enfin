@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import styles from '../../styles/Home.module.css';
 import Flexbox from 'flexbox-react';
 import Progress from './Progress';
-import BubbleChart from './BubbleChart';
+// import BubbleChart from './BubbleChart';
 import TimeRange from './TimeRange';
 import ImpactStatement from './ImpactStatement';
-import { runInThisContext } from 'vm';
-import BarChart from './BarChart';
+// import { runInThisContext } from 'vm';
+// import BarChart from './BarChart';
 
 class Home extends Component {
   constructor() {
