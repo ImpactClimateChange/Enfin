@@ -9,13 +9,18 @@ class Intro extends Component {
         <div className={styles.backgroundimg}>
           <div className={styles.description}>
             <div className={styles.descriptionInner}>
-              <h1><span>en</span><span>fin</span>: <span>environmental </span><span>finance</span></h1>
+              <h1>
+                <span>en</span>
+                <span>fin</span>: <span>environmental </span>
+                <span>finance</span>
+              </h1>
               <h2>offsetting your carbon emissions</h2>
-              <Button outline color='primary'>SIGN UP</Button>{' '}
+              <Button outline color="primary">
+                SIGN UP
+              </Button>
             </div>
           </div>
         </div>
-        
       </div>
     );
   }

@@ -46,7 +46,7 @@ class Home extends Component {
         </div>
 
         <div>
-          <Progress emissions={this.state.emissions} offset={this.state.offset}/>
+          <Progress emissions={this.state.emissions} offset={this.state.offset} />
         </div>
         <Flexbox minHeight="100vh" justifyContent="space-around">
           <Flexbox element="header" height="60px">
@@ -58,11 +58,14 @@ class Home extends Component {
               {return(this.state.breakdown[category]['emissions'])})} size={[500,500]}/> */}
           </Flexbox>
           <Flexbox>
-            <ImpactStatement emissions={this.state.emissions} offset={this.state.offset} timeRange={this.state.timeRange}/>
+            <ImpactStatement
+              emissions={this.state.emissions}
+              offset={this.state.offset}
+              timeRange={this.state.timeRange}
+            />
           </Flexbox>
         </Flexbox>
       </div>
-      
     );
   }
 }
