@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import styles from '../../styles/Splash.module.css';
-// import GoogleButton from 'react-google-button';
-import { Button } from 'reactstrap';
+import styles from '../../styles/Home.module.css';
 
 class Footer extends Component {
   render() {
@@ -10,12 +8,10 @@ class Footer extends Component {
         <div className={styles.footerBackground}>
           <div>
             <div className={styles.footer}>
-              <p>contact info here</p>
+              <p>© 2019 Enfin</p>
             </div>
           </div>
-          <div>
-            <Button outline color='primary'>SIGN UP</Button>{' '}
-          </div>
+          
         </div>
       </div>
     );
