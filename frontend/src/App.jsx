@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-import { Header, Authenticated, Splash, Home } from './components';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Header, Authenticated, Splash, Home, About} from './components';
 
 class App extends Component {
   state = { user: null };
@@ -22,6 +22,7 @@ class App extends Component {
           )} */}
           <Route exact path="/" component={Splash} />
           <Route path="/home" component={Home} />
+          <Route path="/about" component={About} />
         </div>
       </BrowserRouter>
     );
