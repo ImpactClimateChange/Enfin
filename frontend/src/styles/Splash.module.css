@@ -40,7 +40,11 @@
   margin: 1em;
   width: 60%;
   font-size: 1.1em;
-  color: #383D3B;
+  color: #275D7D;
+}
+
+.green {
+  color: #49C8AB;
 }
 .descriptionInner h1 {
   margin: 1em;
@@ -85,6 +89,8 @@
   width: 50%;
   margin: auto;
   background-color: #747575;
+  float: left;
+  margin-left: 20px;
   /* display: inline-block;
     width: 60%; */
   /* width: 50%; */

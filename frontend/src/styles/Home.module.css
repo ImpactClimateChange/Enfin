@@ -21,3 +21,8 @@
     justify-content: center;
     margin-bottom: 5px;
 }
+
+.footer {
+    float: left;
+    margin-left: 20px;
+}

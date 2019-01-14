@@ -53,9 +53,9 @@ class Home extends Component {
             Emissions
             {/* <BubbleChart emmissions = {this.state.emissions} breakdown = {this.state.breakdown} /> */}
             {/* <BarGraph data={[5,10,1,3,6,7,8, 1100]} size={[500,500]} /> */}
-            {/* <BarChart data={
+            <BarChart data={
               Object.keys(this.state.breakdown).map((category) =>
-              {return(this.state.breakdown[category]['emissions'])})} size={[500,500]}/> */}
+              {return(this.state.breakdown[category]['emissions'])})} size={[500,500]}/> 
           </Flexbox>
           <Flexbox>
             <ImpactStatement emissions={this.state.emissions} offset={this.state.offset} timeRange={this.state.timeRange}/>
