@@ -21,8 +21,8 @@ class App extends Component {
             <Home onAuth={this.fakeAuth} />
           )} */}
           <Route exact path="/" component={Splash} />
-          <Route path="/home" component={Home} />
-          <Route path="/about" component={About} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/about" component={About} />
         </div>
       </BrowserRouter>
     );
