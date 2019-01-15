@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 // import styles from '../../styles/Splash.module.css';
-import Headshots from './Headshots';
+import Research from './Research';
 import Footer from '../Splash/Footer';
 
 
-class About extends Component {
+class Methodology extends Component {
   render() {
     return (
       <div>
-        <Headshots />
+        <Research />
         <Footer />
       </div>
     );
   }
 }
 
-export default About;
+export default Methodology;
