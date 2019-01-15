@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
 import ReactChartkick, { PieChart } from 'react-chartkick';
 import Chart from 'chart.js';
 import styles from '../../styles/Home.module.css';
