@@ -7,6 +7,8 @@ import VolunteerDash from './VolunteerDash';
 import AdminDash from './AdminDash';
 import Home from './Home';
 import About from './About';
+import Methodology from './Methodology';
+
 export {
   Header,
   Splash,
@@ -16,5 +18,6 @@ export {
   VolunteerDash,
   AdminDash,
   Home,
-  About
+  About,
+  Methodology
 };

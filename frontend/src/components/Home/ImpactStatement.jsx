@@ -13,7 +13,7 @@ const EMISSIONS_TO_RESOURCE = {
 class ImpactStatement extends Component {
   render() {
     return (
-      <div style={{ margin: 20 }}>
+      <div className='dataSection'>
         <h3>Your Carbon Impact</h3>
         <p>
           In the last {Math.round(this.props.timeRange)} days, your spending has caused
