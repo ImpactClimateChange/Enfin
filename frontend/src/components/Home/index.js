@@ -4,6 +4,7 @@ import Flexbox from 'flexbox-react';
 import Progress from './Progress';
 import BarChart from './BarChart'
 // import BubbleChart from './BubbleChart'
+import PieChart from './PieChart';
 import ReactBubbleChart from 'react-bubble-chart';
 
 import TimeRange from './TimeRange';
@@ -61,8 +62,8 @@ class Home extends Component {
         </div>
         <Flexbox minHeight="100vh" justifyContent="space-around">
           <Flexbox element="header" height="60px">
-            
-             {/*<BarChart data={[5,10,1,3,6,7,8, 1100]} size={[500,500]} /> */}
+{/*              <PieChart/>
+*/}             {/*<BarChart data={[5,10,1,3,6,7,8, 1100]} size={[500,500]} /> */}
              <BarChart data={ this.state.breakdown ? 
               Object.keys(this.state.breakdown).map((category) =>
               {return({'type': category, 'amount': this.state.breakdown[category]['emissions']})}) : []} size={[500,500]}/> 
