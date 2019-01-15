@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from '../../styles/Home.module.css';
 import Flexbox from 'flexbox-react';
 import Progress from './Progress';
+<<<<<<< HEAD
 import BarChart from './BarChart'
 // import BubbleChart from './BubbleChart'
 import ReactBubbleChart from 'react-bubble-chart';
@@ -9,6 +10,13 @@ import ReactBubbleChart from 'react-bubble-chart';
 import TimeRange from './TimeRange';
 import ImpactStatement from './ImpactStatement';
 import { runInThisContext } from 'vm';
+=======
+// import BubbleChart from './BubbleChart';
+import TimeRange from './TimeRange';
+import ImpactStatement from './ImpactStatement';
+// import { runInThisContext } from 'vm';
+// import BarChart from './BarChart';
+>>>>>>> 047a3bf50473eaa50e13ca2615252e0725a44e70
 
 class Home extends Component {
   constructor() {
@@ -57,7 +65,7 @@ class Home extends Component {
         </div>
 
         <div>
-          <Progress emissions={this.state.emissions} offset={this.state.offset}/>
+          <Progress emissions={this.state.emissions} offset={this.state.offset} />
         </div>
         <Flexbox minHeight="100vh" justifyContent="space-around">
           <Flexbox element="header" height="60px">
@@ -80,11 +88,14 @@ class Home extends Component {
 {/*              <ReactBubbleChart data={data}/>
 */}          </Flexbox>
           <Flexbox>
-            <ImpactStatement emissions={this.state.emissions} offset={this.state.offset} timeRange={this.state.timeRange}/>
+            <ImpactStatement
+              emissions={this.state.emissions}
+              offset={this.state.offset}
+              timeRange={this.state.timeRange}
+            />
           </Flexbox>
         </Flexbox>
       </div>
-      
     );
   }
 }

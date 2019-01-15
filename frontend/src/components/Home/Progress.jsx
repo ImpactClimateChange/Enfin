@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Line, Circle } from 'rc-progress';
+// import { Line, Circle } from 'rc-progress';
 // import Flexbox from 'flexbox-react';
 import styles from '../../styles/Home.module.css';
 import { Progress } from 'reactstrap';
@@ -23,8 +23,8 @@ class Progess extends Component {
   }
 
   emissionsIncrease() {
-    const emissionsPercent = (this.props.emissions !== 0) ? this.state.emissionsPercent + 1 : 0;
-    const pct = this.props.emissions / (this.props.emissions + this.props.offset) * 100;
+    const emissionsPercent = this.props.emissions !== 0 ? this.state.emissionsPercent + 1 : 0;
+    const pct = (this.props.emissions / (this.props.emissions + this.props.offset)) * 100;
     if (emissionsPercent >= pct) {
       clearTimeout(this.tm);
       return;
@@ -34,8 +34,8 @@ class Progess extends Component {
   }
 
   offsetIncrease() {
-    const offsetPercent = (this.props.offset !== 0) ? this.state.offsetPercent + 1 : 0;
-    const pct = this.props.offset / (this.props.emissions + this.props.offset) * 100;
+    const offsetPercent = this.props.offset !== 0 ? this.state.offsetPercent + 1 : 0;
+    const pct = (this.props.offset / (this.props.emissions + this.props.offset)) * 100;
     if (offsetPercent >= pct) {
       clearTimeout(this.to);
       return;
@@ -61,7 +61,11 @@ class Progess extends Component {
             </Col>
             <Col md={1}>
               <div className={styles.percent}>
-                <p>{Math.floor(this.state.emissionsPercent*(this.props.emissions+this.props.offset)/100)}</p>
+                <p>
+                  {Math.floor(
+                    (this.state.emissionsPercent * (this.props.emissions + this.props.offset)) / 100
+                  )}
+                </p>
               </div>
             </Col>
           </Row>
@@ -80,7 +84,11 @@ class Progess extends Component {
             </Col>
             <Col md={1}>
               <div className={styles.percent}>
-                <p>{Math.floor(this.state.offsetPercent*(this.props.emissions+this.props.offset)/100)}</p>
+                <p>
+                  {Math.floor(
+                    (this.state.offsetPercent * (this.props.emissions + this.props.offset)) / 100
+                  )}
+                </p>
               </div>
             </Col>
           </Row>

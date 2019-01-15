@@ -7,6 +7,7 @@ import Authenticated from './Authenticated';
 import VolunteerDash from './VolunteerDash';
 import AdminDash from './AdminDash';
 import Home from './Home';
+import About from './About';
 
 export {
   VolunteerApp,
@@ -17,5 +18,6 @@ export {
   Authenticated,
   VolunteerDash,
   AdminDash,
-  Home
+  Home,
+  About
 };

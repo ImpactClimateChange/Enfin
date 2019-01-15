@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 // import './App.css'
-import { scaleLinear } from 'd3-scale'
-import { max } from 'd3-array'
-import { select } from 'd3-selection'
+import { scaleLinear } from 'd3-scale';
+import { max } from 'd3-array';
+import { select } from 'd3-selection';
 
 class BarChart extends Component {
    constructor(props){
@@ -25,9 +25,9 @@ class BarChart extends Component {
       .selectAll('rect')
       .data(this.props.data.map((el) => el.amount))
       .enter()
-      .append('rect')
-   
-   select(node)
+      .append('rect');
+
+    select(node)
       .selectAll('rect')
       .data(this.props.data.map((el) => el.amount))
       .exit()
@@ -54,4 +54,4 @@ render() {
          )
    }
 }
-export default BarChart
+export default BarChart;
