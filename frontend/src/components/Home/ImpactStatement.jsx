@@ -11,31 +11,39 @@ const EMISSIONS_TO_RESOURCE = {
 };
 
 class ImpactStatement extends Component {
+  constructor(props) {
+    super(props);
+    this.augmentedEmissions = this.augmentedEmissions.bind(this);
+  }
+  augmentedEmissions(type) {
+    const result = (this.props.emissions - this.props.offset);
+    return type ? EMISSIONS_TO_RESOURCE[type] * result : result;
+  }
   render() {
     return (
       <div className={styles.dataSection}>
         <h3>Your Carbon Impact</h3>
         <p>
           In the last {Math.round(this.props.timeRange)} days, your spending has caused{' '}
-          <b>{Math.round(this.props.emissions)} kg of CO2 emissions.</b>
+          <b>{Math.round(this.augmentedEmissions())} kg of CO2 emissions.</b>
         </p>
         <p>That's equivalent to: </p>
         <ul>
           <li>
-            Keeping {Math.round(EMISSIONS_TO_RESOURCE['lightbulb_years'] * this.props.emissions)}{' '}
+            Keeping {Math.round(this.augmentedEmissions('lightbulb_years'))}{' '}
             lightbulbs continuously on for a year
           </li>
           <li>
             Powering New York City for{' '}
-            {(EMISSIONS_TO_RESOURCE['nyc_seconds'] * this.props.emissions).toFixed(2)} seconds
+            {this.augmentedEmissions('nyc_seconds').toFixed(2)} seconds
           </li>
           <li>
             Driving an average car{' '}
-            {Math.round(EMISSIONS_TO_RESOURCE['car_miles'] * this.props.emissions)} miles
+            {Math.round(this.augmentedEmissions('car_miles'))} miles
           </li>
         </ul>
         <p>
-          Planting {Math.round(EMISSIONS_TO_RESOURCE['tree'] * this.props.emissions)} trees would{' '}
+          Planting {Math.round(this.augmentedEmissions('tree'))} trees would{' '}
           entirely absorb these carbon emissions. <br />
         </p>
         <div className={styles.dataSection}>

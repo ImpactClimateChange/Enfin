@@ -64,7 +64,7 @@ class Home extends Component {
           <div>
             <ImpactStatement
               emissions={this.state.emissions}
-              offset={this.state.offset}
+              offset={this.state.offsetDonation}
               timeRange={this.state.timeRange}
             />
             <div>
