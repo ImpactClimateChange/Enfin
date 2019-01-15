@@ -42,8 +42,13 @@ const CATEGORIES = {
   "other": {
       "mult": (7 / 3 / 15),
       "includeTypes": ["*"],
-      "excludeTypes": ["Airlines and Aviation Services", "Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses","Utilities","Supermarkets and Groceries","Fast Food","Food and Drink","Shops","Transfer","Payment"]
-  }
+      "excludeTypes": ["Environmental","Airlines and Aviation Services", "Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses","Utilities","Supermarkets and Groceries","Fast Food","Food and Drink","Shops","Transfer","Payment"]
+  },
+  "offsetDonation": {
+      "mult": (0),
+      "includeTypes": ["Environmental"],
+      "excludeTypes": []
+  },
 }
 
 function categorizeTransactions(transactionsResponse) {

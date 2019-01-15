@@ -14,7 +14,7 @@ class Home extends Component {
       emissions: 0,
       cost: 0,
       offsetNeeded: 0,
-      offset: 0,
+      offsetDonation: 0,
       breakdown: null,
       timeRange: 30
     };
@@ -29,13 +29,13 @@ class Home extends Component {
         console.log("emissions", emissions)
         const cost = data['cost'];
         console.log("cost", cost)
-        const offsetNeeded = data['offset'];
+        const offsetNeeded = data['offsetNeeded'];
         console.log("offsetNeeded", offsetNeeded)
-        const offset = 0;
-        // const offset = data['breakdown']['offsetDonations']
-        console.log("offset", offset)
         const breakdown = data['breakdown'];
-        this.setState({ emissions, cost, offsetNeeded, breakdown, timeRange });
+        const offsetDonation = breakdown['offsetDonation']['cost'];
+        console.log("offsetDonation", offsetDonation);
+        delete breakdown.offsetDonation;
+        this.setState({ emissions, cost, offsetNeeded, offsetDonation, breakdown, timeRange });
       });
   }
   componentDidMount() {
@@ -68,7 +68,7 @@ class Home extends Component {
               timeRange={this.state.timeRange}
             />
             <div>
-              <Progress emissions={this.state.emissions} offset={this.state.offset}  />
+              <Progress emissions={this.state.emissions} offset={this.state.offsetDonation}  />
             </div>
           </div>
         </Flexbox>
