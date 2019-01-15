@@ -38,10 +38,10 @@ class ImpactStatement extends Component {
           Planting {Math.round(EMISSIONS_TO_RESOURCE['tree'] * this.props.emissions)} trees would{' '}
           entirely absorb these carbon emissions. <br />
         </p>
+        <div className={styles.dataSection}>
         <p className={styles.center}>
           <b>Take action now!</b>
         </p>
-        <div className={styles.dataSection}>
           <Button
             outline
             color="primary"
