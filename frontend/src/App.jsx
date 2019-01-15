@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Header, Authenticated, Splash, Home, About, Methodology} from './components';
+import { Header, Authenticated, Splash, Home, About, Methodology } from './components';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class App extends Component {
     // check url for user id
   }
 
-  fakeAuth = _ => this.setState({ user: { role: "admin" } });
+  fakeAuth = _ => this.setState({ user: { role: 'admin' } });
 
   fakeLogout = _ => this.setState({ user: null });
 
