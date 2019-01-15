@@ -2,13 +2,13 @@
   "name": "ClimateChangers",
   "version": "1.0.0",
   "description": "an example for deploying a React + NodeJS app to Heroku",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
     "dev": "concurrently -k \"npm run frontend\" \"npm run backend\"",
     "frontend": "webpack -d --watch",
-    "backend": "nodemon index.js",
-    "start": "npm run build && NODE_ENV=production node index.js",
+    "backend": "nodemon server.js",
+    "start": "node server.js",
     "test": "mocha --compilers js:babel-core/register ./test/**/*.js --require ignore-styles"
   },
   "author": "",
