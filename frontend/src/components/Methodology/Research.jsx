@@ -19,6 +19,13 @@ class Research extends Component {
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
             mollit anim id est laborum.
           </p>
+          <ul className={styles.bio}>Sources
+              <li>EPA eGRID Summary Tables and Data Files</li>
+              <li>U.S. Department of Energy</li>
+              <li>Energy Information Agency, US Census Bureau</li>
+              <li>US DOE 1605(b) Voluntary Reporting of Greenhouse Gases Program</li>
+              <li>DOE EIA Fuel Oil and Kerosene Sales 2014</li>
+          </ul>
         </div>
       </div>
     );
