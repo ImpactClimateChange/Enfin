@@ -17,35 +17,41 @@ class BarChart extends Component {
    }
    createBarChart() {
       const node = this.node
-      const dataMax = max(this.props.data)
+      const dataMax = max(this.props.data.map((el) => el.amount))
       const yScale = scaleLinear()
          .domain([0, dataMax])
          .range([0, this.props.size[1]])
    select(node)
       .selectAll('rect')
-      .data(this.props.data)
+      .data(this.props.data.map((el) => el.amount))
       .enter()
       .append('rect')
    
    select(node)
       .selectAll('rect')
-      .data(this.props.data)
+      .data(this.props.data.map((el) => el.amount))
       .exit()
       .remove()
-   
+
    select(node)
       .selectAll('rect')
       .data(this.props.data)
       .style('fill', '#fe9922')
-      .attr('x', (d,i) => i * 25)
-      .attr('y', d => this.props.size[1] - yScale(d))
-      .attr('height', d => yScale(d))
-      .attr('width', 25)
+      .attr('x', (d,i) => i * 50)
+      .attr('y', d => this.props.size[1] - yScale(d.amount))
+      .attr('height', d => yScale(d.amount))
+      .attr('width', 50)
+      .append('text').text((d,i) => {return d.type});
    }
 render() {
-      return <svg ref={node => this.node = node}
-      width={500} height={500}>
-      </svg>
+      return (
+         <div className='dataSection'>
+            <h3>Emission Breakdown</h3>
+            <svg ref={node => this.node = node}
+            width={500} height={500}>
+            </svg>
+         </div>
+         )
    }
 }
 export default BarChart
