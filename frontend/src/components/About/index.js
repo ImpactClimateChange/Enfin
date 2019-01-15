@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Headshots from './Headshots';
 import Footer from '../Splash/Footer';
 
+
 class About extends Component {
   render() {
     return (

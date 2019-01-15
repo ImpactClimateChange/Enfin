@@ -36,7 +36,8 @@ class Headshots extends Component {
             </Row>
         </Container>
         </div>
-      </div>  
+      </div>        
+
     );
   }
 }

@@ -21,6 +21,10 @@
     justify-content: center;
 }
 
+.footer {
+    float: left;
+    margin-left: 20px;
+}
 .dataSection {
     margin: 50px;
 }
