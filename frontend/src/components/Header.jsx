@@ -96,23 +96,29 @@ class Header extends Component {
                 >
                   <form id="plaid-link-form" />
                 </Popup> */}
-                <PlaidLink
-                  clientName="Plaid Client"
-                  env="sandbox"
-                  product={['auth', 'transactions']}
-                  publicKey="614be98f819e9bd8d0db9abec1c08a"
-                  className="some-class-name"
-                  apiVersion="v2"
-                  onSuccess={this.handleOnSuccess}
-                  onExit={this.handleOnExit}
-                  onEvent={this.handleOnEvent}
-                  onLoad={this.handleOnLoad}
-                  style={{ border: '0px' }}
-                >
-                  <Button outline color="primary" onClick={this.props.displayPopup}>
-                    SIGN IN
+                {this.props.user ? (
+                  <Button outline color="primary" onClick={() => this.props.logout()}>
+                    LOG OUT
                   </Button>
-                </PlaidLink>
+                ) : (
+                  <PlaidLink
+                    clientName="Plaid Client"
+                    env="sandbox"
+                    product={['auth', 'transactions']}
+                    publicKey="614be98f819e9bd8d0db9abec1c08a"
+                    className="some-class-name"
+                    apiVersion="v2"
+                    onSuccess={this.handleOnSuccess}
+                    onExit={this.handleOnExit}
+                    onEvent={this.handleOnEvent}
+                    onLoad={this.handleOnLoad}
+                    style={{ border: '0px' }}
+                  >
+                    <Button outline color="primary">
+                      SIGN IN
+                    </Button>
+                  </PlaidLink>
+                )}
               </NavItem>
             </Nav>
           </Collapse>

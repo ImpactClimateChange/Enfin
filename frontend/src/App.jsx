@@ -6,20 +6,16 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
-      isOpen: false
+      user: null
     };
   }
-
-  displayPopup = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-  };
-
   componentWillMount(props) {
     // check url for user id
   }
 
   fakeAuth = _ => this.setState({ user: { role: "admin" } });
+
+  fakeLogout = _ => this.setState({ user: null });
 
   render() {
     return (
@@ -28,7 +24,8 @@ class App extends Component {
           <Header
             displayPopup={this.displayPopup}
             onAuth={this.fakeAuth}
-            isOpen={this.state.isOpen}
+            logout={this.fakeLogout}
+            user={this.state.user}
           />
           {this.state.user ? <Home user={this.state.user} /> : <Splash />}
           {/* <Route exact path="/" component={Splash} /> */}
