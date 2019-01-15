@@ -13,6 +13,7 @@ class Home extends Component {
     this.state = {
       emissions: 0,
       cost: 0,
+      offsetNeeded: 0,
       offset: 0,
       breakdown: null,
       timeRange: 30
@@ -28,10 +29,12 @@ class Home extends Component {
         console.log("emissions", emissions)
         const cost = data['cost'];
         console.log("cost", cost)
-        const offset = data['offset'];
+        const offsetNeeded = data['offset'];
+        console.log("offsetNeeded", offsetNeeded)
+        const offset = data['breakdown']['offsetDonations']
         console.log("offset", offset)
         const breakdown = data['breakdown'];
-        this.setState({ emissions, cost, offset, breakdown, timeRange });
+        this.setState({ emissions, cost, offsetNeeded, breakdown, timeRange });
       });
   }
   componentDidMount() {
@@ -61,7 +64,6 @@ class Home extends Component {
             <ImpactStatement
               emissions={this.state.emissions}
               offset={this.state.offset}
-              timeRange={this.state.timeRange}
             />
             <div>
               <Progress emissions={this.state.emissions} offset={this.state.offset}  />
