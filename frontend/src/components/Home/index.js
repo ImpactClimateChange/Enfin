@@ -4,7 +4,7 @@ import Flexbox from 'flexbox-react';
 import Progress from './Progress';
 import BarChart from './BarChart'
 // import BubbleChart from './BubbleChart'
-import ReactBubbleChart from 'react-bubble-chart';
+// import ReactBubbleChart from 'react-bubble-chart';
 
 import TimeRange from './TimeRange';
 import ImpactStatement from './ImpactStatement';

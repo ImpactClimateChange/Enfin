@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-import { Redirect } from 'react-router-dom';
 import logo from '../images/logo.png';
 import styles from '../styles/Header.module.css';
-import Popup from 'reactjs-popup';
-import Signin from './Signin';
 import PlaidLink from 'react-plaid-link';
 
 class Header extends Component {
