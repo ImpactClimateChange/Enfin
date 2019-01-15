@@ -27,7 +27,8 @@ class App extends Component {
             logout={this.fakeLogout}
             user={this.state.user}
           />
-          {this.state.user ? <Home user={this.state.user} /> : <Splash />}
+          <Route exact path="/" component={this.state.user ? Home : Splash} user={this.state.user}/>
+          {/* {this.state.user ? <Home user={this.state.user} /> : <Splash />} */}
           {/* <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} /> */}
           {/* <Route exact path= " " component={Splash}/> */}
