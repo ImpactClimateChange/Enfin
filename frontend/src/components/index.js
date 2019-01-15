@@ -1,4 +1,3 @@
-import VolunteerApp from './VolunteerApp';
 import Header from './Header';
 import Splash from './Splash';
 import PendingVolunteer from './PendingVolunteer';
@@ -8,9 +7,7 @@ import VolunteerDash from './VolunteerDash';
 import AdminDash from './AdminDash';
 import Home from './Home';
 import About from './About';
-
 export {
-  VolunteerApp,
   Header,
   Splash,
   PendingVolunteer,
