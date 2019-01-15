@@ -40,7 +40,27 @@
   margin: 1em;
   width: 60%;
   font-size: 1.1em;
-  color: #383D3B;
+  color: #275D7D;
+  /* text-align: center; */
+}
+.italic {
+  font-style: italic;
+}
+.descriptionBio {
+  line-height: 2em;
+  margin: 1em;
+  width: 75%;
+  font-size: 1.1em;
+  color: #275D7D;
+  /* text-align: center; */
+}
+
+.green {
+  color: #49C8AB;
+}
+
+.bio {
+  text-align: left;
 }
 .descriptionInner h1 {
   margin: 1em;
@@ -85,6 +105,8 @@
   width: 50%;
   margin: auto;
   background-color: #747575;
+  float: left;
+  margin-left: 20px;
   /* display: inline-block;
     width: 60%; */
   /* width: 50%; */

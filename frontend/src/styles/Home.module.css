@@ -19,9 +19,12 @@
 .timeRange {
     display: flex;
     justify-content: center;
-    margin-bottom: 5px;
 }
 
+.footer {
+    float: left;
+    margin-left: 20px;
+}
 .dataSection {
-    margin: 20px;
+    margin: 50px;
 }
