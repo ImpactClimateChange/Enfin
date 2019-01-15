@@ -46,12 +46,12 @@ class Progess extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.dataSection}>
         <Container>
           <Row>
             <Col md={1}>
-              <div className={styles.center}>
-                <h5>Emissions</h5>
+              <div className={styles.center} style={{marginRight: "20px"}}>
+                <h5>Emission</h5>
               </div>
             </Col>
             <Col md={10}>
@@ -71,7 +71,7 @@ class Progess extends Component {
           </Row>
           <Row>
             <Col md={1}>
-              <div className={styles.center}>
+              <div className={styles.center} style={{marginRight: "20px"}}>
                 <h5>Offset</h5>
               </div>
             </Col>
