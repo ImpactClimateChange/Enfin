@@ -31,7 +31,8 @@ class Home extends Component {
         console.log("cost", cost)
         const offsetNeeded = data['offset'];
         console.log("offsetNeeded", offsetNeeded)
-        const offset = data['breakdown']['offsetDonations']
+        const offset = 0;
+        // const offset = data['breakdown']['offsetDonations']
         console.log("offset", offset)
         const breakdown = data['breakdown'];
         this.setState({ emissions, cost, offsetNeeded, breakdown, timeRange });
@@ -64,6 +65,7 @@ class Home extends Component {
             <ImpactStatement
               emissions={this.state.emissions}
               offset={this.state.offset}
+              timeRange={this.state.timeRange}
             />
             <div>
               <Progress emissions={this.state.emissions} offset={this.state.offset}  />

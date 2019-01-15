@@ -11,22 +11,27 @@ class TimeRange extends Component {
     };
     // this.increase = this.increase.bind(this);
   }
+
+  // getBreakdown is called twice on click because otherwise the progressbar only halfway updates.
+  // TODO fix progressbar and only call this function once timeRange change.
+  // ALSO make getBreakdown dynamic and store the Breakdown for different timeranges so flipping
+  //      back to a range that was previously loaded doesnt make a new api query
   render() {
     return (
       <div className={styles.timeRange}>
-        <Button outline color="primary" onClick={() => this.props.getBreakdown(30)}>
+        <Button outline color="primary" onClick={() => {this.props.getBreakdown(30); this.props.getBreakdown(30);}}>
           1 Month
         </Button>
-        <Button outline color="primary" onClick={() => this.props.getBreakdown(90)}>
+        <Button outline color="primary" onClick={() => {this.props.getBreakdown(90); this.props.getBreakdown(90);}}>
           3 Months
         </Button>
-        <Button outline color="primary" onClick={() => this.props.getBreakdown(180)}>
+        <Button outline color="primary" onClick={() => {this.props.getBreakdown(180); this.props.getBreakdown(180);}}>
           6 Months
         </Button>
-        <Button outline color="primary" onClick={() => this.props.getBreakdown(365)}>
+        <Button outline color="primary" onClick={() => {this.props.getBreakdown(365); this.props.getBreakdown(365);}}>
           1 Year
         </Button>
-        <Button outline color="primary" onClick={() => this.props.getBreakdown(365)}>
+        <Button outline color="primary" onClick={() => {this.props.getBreakdown(365); this.props.getBreakdown(365);}}>
           All time
         </Button>
       </div>
