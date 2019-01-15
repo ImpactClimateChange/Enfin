@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
-// import styles from '../../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 
 //amount of resource equivalent to 1 kg carbon emission
 const EMISSIONS_TO_RESOURCE = {
@@ -13,49 +13,54 @@ const EMISSIONS_TO_RESOURCE = {
 class ImpactStatement extends Component {
   render() {
     return (
-      <div className='dataSection'>
+      <div className={styles.dataSection}>
         <h3>Your Carbon Impact</h3>
         <p>
-          In the last {Math.round(this.props.timeRange)} days, your spending has caused
+          In the last {Math.round(this.props.timeRange)} days, your spending has caused{' '}
           <b>{Math.round(this.props.emissions)} kg of CO2 emissions.</b>
         </p>
         <p>That's equivalent to: </p>
         <ul>
           <li>
-            Keeping {Math.round(EMISSIONS_TO_RESOURCE['lightbulb_years'] * this.props.emissions)}
+            Keeping {Math.round(EMISSIONS_TO_RESOURCE['lightbulb_years'] * this.props.emissions)}{' '}
             lightbulbs continuously on for a year
           </li>
           <li>
-            Powering New York City for
+            Powering New York City for{' '}
             {(EMISSIONS_TO_RESOURCE['nyc_seconds'] * this.props.emissions).toFixed(2)} seconds
           </li>
           <li>
-            Driving an average car
+            Driving an average car{' '}
             {Math.round(EMISSIONS_TO_RESOURCE['car_miles'] * this.props.emissions)} miles
           </li>
         </ul>
         <p>
-          Planting {Math.round(EMISSIONS_TO_RESOURCE['tree'] * this.props.emissions)} trees would
-          entirely absorb these carbon emissions. <br /> <b>Take action now!</b>
+          Planting {Math.round(EMISSIONS_TO_RESOURCE['tree'] * this.props.emissions)} trees would{' '}
+          entirely absorb these carbon emissions. <br />
         </p>
-        <Button
-          outline
-          color="primary"
-          onClick={() => {
-            console.log('REDUCE!');
-          }}
-        >
-          Reduce Your Carbon Footprint
-        </Button>{' '}
-        <Button
-          outline
-          color="primary"
-          onClick={() => {
-            console.log('REDUCE!');
-          }}
-        >
-          Offset Your Carbon Footprint
-        </Button>
+        <p className={styles.center}>
+          <b>Take action now!</b>
+        </p>
+        <div className={styles.dataSection}>
+          <Button
+            outline
+            color="primary"
+            onClick={() => {
+              console.log('REDUCE!');
+            }}
+          >
+            Reduce Your Carbon Emissions
+          </Button>{' '}
+          <Button
+            outline
+            color="primary"
+            onClick={() => {
+              console.log('OFFSET!');
+            }}
+          >
+            Offset Your Carbon Emissions
+          </Button>
+        </div>
       </div>
     );
   }

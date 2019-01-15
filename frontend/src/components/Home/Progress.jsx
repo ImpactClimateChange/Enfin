@@ -11,6 +11,8 @@ class Progess extends Component {
     this.state = {
       emissionsPercent: 0,
       offsetPercent: 0,
+      emissionsKgDisplay: 0,
+      offsetKgDisplay: 0,
       color: 'red'
     };
     this.emissionsIncrease = this.emissionsIncrease.bind(this);
@@ -22,22 +24,41 @@ class Progess extends Component {
     this.offsetIncrease();
   }
 
+  componentWillReceiveProps() {
+    this.setState({emissionsPercent: 0,
+    offsetPercent: 0,
+    emissionsKgDisplay: 0,
+    offsetKgDisplay: 0});
+    this.emissionsIncrease();
+    this.offsetIncrease();
+  }
+
   emissionsIncrease() {
     const emissionsPercent = this.props.emissions !== 0 ? this.state.emissionsPercent + 1 : 0;
+    var emissionsKgDisplay = Math.floor(
+      (this.state.emissionsPercent * (this.props.emissions + this.props.offset)) / 100
+    )
     const pct = (this.props.emissions / (this.props.emissions + this.props.offset)) * 100;
     if (emissionsPercent >= pct) {
+      emissionsKgDisplay = Math.round(this.props.emissions);
+      this.setState({ emissionsKgDisplay });
       clearTimeout(this.tm);
       return;
     }
-    this.setState({ emissionsPercent });
+    this.setState({ emissionsPercent, emissionsKgDisplay });
     this.tm = setTimeout(this.emissionsIncrease, 5);
   }
 
   offsetIncrease() {
     const offsetPercent = this.props.offset !== 0 ? this.state.offsetPercent + 1 : 0;
+    var offsetKgDisplay = Math.floor(
+      (this.state.offsetPercent * (this.props.emissions + this.props.offset)) / 100
+    )
     const pct = (this.props.offset / (this.props.emissions + this.props.offset)) * 100;
     if (offsetPercent >= pct) {
+      offsetKgDisplay = Math.round(this.props.offset);
       clearTimeout(this.to);
+      this.setState({ offsetKgDisplay });
       return;
     }
     this.setState({ offsetPercent });
@@ -46,12 +67,12 @@ class Progess extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.dataSection}>
         <Container>
           <Row>
             <Col md={1}>
-              <div className={styles.center}>
-                <h5>Emissions</h5>
+              <div className={styles.center} style={{marginRight: "20px"}}>
+                <h5>Emission</h5>
               </div>
             </Col>
             <Col md={10}>
@@ -62,16 +83,14 @@ class Progess extends Component {
             <Col md={1}>
               <div className={styles.percent}>
                 <p>
-                  {Math.floor(
-                    (this.state.emissionsPercent * (this.props.emissions + this.props.offset)) / 100
-                  )}
+                  {this.state.emissionsKgDisplay}
                 </p>
               </div>
             </Col>
           </Row>
           <Row>
             <Col md={1}>
-              <div className={styles.center}>
+              <div className={styles.center} style={{marginRight: "20px"}}>
                 <h5>Offset</h5>
               </div>
             </Col>
@@ -85,9 +104,7 @@ class Progess extends Component {
             <Col md={1}>
               <div className={styles.percent}>
                 <p>
-                  {Math.floor(
-                    (this.state.offsetPercent * (this.props.emissions + this.props.offset)) / 100
-                  )}
+                  {this.state.offsetKgDisplay}
                 </p>
               </div>
             </Col>
