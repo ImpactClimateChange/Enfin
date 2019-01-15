@@ -56,7 +56,7 @@ class Header extends Component {
       <div>
         <Navbar color="white" expand="md">
           <NavbarBrand tag={Link} to="/">
-            <img style={{ width: '124px' }} alt="drawchange logo" src={logo} />
+            <img style={{ width: '124px' }} alt="enfin logo" src={logo} />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>

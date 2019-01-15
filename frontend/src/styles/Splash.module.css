@@ -62,6 +62,10 @@
 .bio {
   text-align: left;
 }
+.under {
+  text-decoration: underline;
+  text-align: left;
+}
 .descriptionInner h1 {
   margin: 1em;
   font-style: italic;
