@@ -25,10 +25,13 @@ class Home extends Component {
       .then(response => response.json())
       .then(data => {
         const emissions = data['emission'];
+        console.log("emissions", emissions)
         const cost = data['cost'];
+        console.log("cost", cost)
         const offset = data['offset'];
+        console.log("offset", offset)
         const breakdown = data['breakdown'];
-        this.setState({ emissions, cost, offset, breakdown });
+        this.setState({ emissions, cost, offset, breakdown, timeRange });
       });
   }
   componentDidMount() {
