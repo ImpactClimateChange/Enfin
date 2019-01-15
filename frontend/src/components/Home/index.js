@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import styles from '../../styles/Home.module.css';
 import Flexbox from 'flexbox-react';
 import Progress from './Progress';
-import BarChart from './BarChart';
-// import BubbleChart from './BubbleChart'
-import PieChart from './PieChart';
-// import ReactBubbleChart from 'react-bubble-chart';
+// import BarChart from './BarChart';
+import ReactChartkick, { PieChart } from 'react-chartkick'
+import Chart from 'chart.js'
+
+
 
 import TimeRange from './TimeRange';
 import ImpactStatement from './ImpactStatement';
-import { runInThisContext } from 'vm';
+
+ReactChartkick.addAdapter(Chart)
 
 class Home extends Component {
   constructor() {
@@ -67,7 +69,7 @@ class Home extends Component {
             {/*              <PieChart/>
              */}{' '}
             {/*<BarChart data={[5,10,1,3,6,7,8, 1100]} size={[500,500]} /> */}
-            <BarChart
+            {/* <BarChart
               data={
                 this.state.breakdown
                   ? Object.keys(this.state.breakdown).map(category => {
@@ -79,20 +81,17 @@ class Home extends Component {
                   : []
               }
               size={[500, 500]}
-            />
-            {/*<BubbleChart data={ 
-                { '_id': 'Emisssions', 'children': this.state.breakdown ? 
-                    Object.keys(this.state.breakdown).map((category) =>
-                      {
-                        return({
-                             _id: category,        // unique id (required)
-                             value: this.state.breakdown[category]['emissions'],      // used to determine relative size of bubbles (required)
-                             colorValue: 0x67000d, // used to determine color
-                             selected: false,  // if true will use selectedColor/selectedTextColor for circle/text
-                        })
-                      }) : []} } size={[500,500]}/> */}
-            {/*              <ReactBubbleChart data={data}/>
-             */}{' '}
+            /> */}
+            {/* <PieChart
+  data={[
+    { title: 'One', value: 10, color: '#E38627' },
+    { title: 'Two', value: 15, color: '#C13C37' },
+    { title: 'Three', value: 20, color: '#6A2135' },
+  ]}
+/>; */}
+          {/* <PieChart/> */}
+          <PieChart data={[["Blueberry", 44], ["Strawberry", 23]]} />
+
           </Flexbox>
           <Flexbox>
             <ImpactStatement

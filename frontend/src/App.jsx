@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Header, Authenticated, Splash, Home, About, Methodology} from './components';
+import { Header, Splash, Home, About, Methodology } from './components';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class App extends Component {
     // check url for user id
   }
 
-  fakeAuth = _ => this.setState({ user: { role: "admin" } });
+  fakeAuth = _ => this.setState({ user: { role: 'admin' } });
 
   fakeLogout = _ => this.setState({ user: null });
 
@@ -28,8 +28,8 @@ class App extends Component {
             user={this.state.user}
           />
           {this.state.user ? <Home user={this.state.user} /> : <Splash />}
-          {/* <Route exact path="/" component={Splash} /> */}
-          {/* <Route exact path="/home" component={Home} /> */}
+          {/* <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} /> */}
           <Route exact path="/about" component={About} />
           <Route exact path="/methodology" component={Methodology} />
         </div>

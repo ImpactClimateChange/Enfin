@@ -7,7 +7,7 @@
     "backend/node_modules"
   ],
   "scripts": {
-    "start": "cd backend/ && yarn start",
+    "start": "cd backend/ && node server.js && cd ../ && cd frontend/ $$ npm start",
     "install-frontend": "yarn install --cwd frontend",
     "install-backend": "yarn install --cwd backend",
     "build-frontend": "cd frontend/ && yarn build",
