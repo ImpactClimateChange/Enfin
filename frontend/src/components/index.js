@@ -8,7 +8,7 @@ import VolunteerDash from './VolunteerDash';
 import AdminDash from './AdminDash';
 import Home from './Home';
 import About from './About';
-import Signin from './Signin';
+import Methodology from './Methodology';
 
 export {
   VolunteerApp,
@@ -21,5 +21,5 @@ export {
   AdminDash,
   Home,
   About,
-  Signin
+  Methodology
 };

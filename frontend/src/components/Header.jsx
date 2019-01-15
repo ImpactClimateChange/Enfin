@@ -68,7 +68,7 @@ class Header extends Component {
                 <NavLink href="/about">ABOUT</NavLink>
               </NavItem>
               <NavItem className={styles.navItem}>
-                <NavLink href="index.js">RESEARCH</NavLink>
+                <NavLink href="/methodology">METHODOLOGY</NavLink>
               </NavItem>
               <NavItem className={styles.navItem} onClick={this.props.displayPopup}>
                 {/* <Popup

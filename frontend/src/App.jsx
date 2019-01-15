@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Header, Authenticated, Splash, Home, About, Signin } from './components';
+import { Header, Authenticated, Splash, Home, About, Methodology} from './components';
 
 class App extends Component {
   constructor(props) {
@@ -31,6 +31,7 @@ class App extends Component {
           {/* <Route exact path="/" component={Splash} /> */}
           {/* <Route exact path="/home" component={Home} /> */}
           <Route exact path="/about" component={About} />
+          <Route path="/methodology" component={Methodology} />
         </div>
       </BrowserRouter>
     );
