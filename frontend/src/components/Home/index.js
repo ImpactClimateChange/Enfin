@@ -32,11 +32,13 @@ class Home extends Component {
         const offsetNeeded = data['offsetNeeded'];
         console.log("offsetNeeded", offsetNeeded)
         const breakdown = data['breakdown'];
-        const offsetDonation = timeRange === 30 ? 682 : 1457;
-        //breakdown['offsetDonation']['cost'];
-        console.log("offsetDonation", offsetDonation);
-        delete breakdown.offsetDonation;
-        this.setState({ emissions, cost, offsetNeeded, offsetDonation, breakdown, timeRange });
+        if (breakdown) {
+          const offsetDonation = timeRange === 30 ? 682 : 1457; // FAKE OFFSET
+          //breakdown['offsetDonation']['cost'];
+          console.log("offsetDonation", offsetDonation);
+          delete breakdown.offsetDonation;
+          this.setState({ emissions, cost, offsetNeeded, offsetDonation, breakdown, timeRange });
+        }
       });
   }
   componentDidMount() {
