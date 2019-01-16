@@ -16,7 +16,7 @@ class Progess extends Component {
       color: 'red'
     };
     this.emissionsIncrease = this.emissionsIncrease.bind(this);
-    this.offsetIncrease = this.offsetIncrease.bind(this);
+    this.offsetIncrease = this.offsetIncrease.bind(this);    
   }
 
   componentDidMount() {

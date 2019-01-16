@@ -2,7 +2,6 @@
 
 const util = require('util');
 const transactions = require('./transactions');
-
 const envvar = require('envvar');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -134,7 +133,7 @@ app.get('/breakdown/:days', function(request, response, next) {
       const emission = Object.keys(categorizedTransactions).reduce(
           (acc, key) => {return acc + categorizedTransactions[key]['emissions']}, 0);
       const offset = transactions.offsetCost(emission);
-      response.json({error: null, cost: cost, emission: emission, offset: offset, breakdown: categorizedTransactions});
+      response.json({error: null, cost: cost, emission: emission, offsetNeeded: offset, breakdown: categorizedTransactions});
     }
   });
 });
