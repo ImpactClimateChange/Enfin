@@ -69,7 +69,7 @@ class Home extends Component {
             />
             <div>
               <Progress emissions={this.state.emissions} offset={this.state.offsetDonation} />
-           </div>
+            </div>
           </div>
         </Flexbox>
         <Footer></Footer>
