@@ -33,8 +33,7 @@ class Home extends Component {
         console.log("offsetNeeded", offsetNeeded)
         const breakdown = data['breakdown'];
         if (breakdown) {
-          const offsetDonation = timeRange === 30 ? 682 : 1457; // FAKE OFFSET
-          //breakdown['offsetDonation']['cost'];
+          const offsetDonation = breakdown['offsetDonation']['cost'];
           console.log("offsetDonation", offsetDonation);
           delete breakdown.offsetDonation;
           this.setState({ emissions, cost, offsetNeeded, offsetDonation, breakdown, timeRange });
