@@ -18,36 +18,52 @@ class Home extends Component {
       offsetNeeded: 0,
       offsetDonation: 0,
       breakdown: null,
-      timeRange: 30
+      timeRange: 30,
+      responseCache: {},
     };
     this.getBreakdown = this.getBreakdown.bind(this);
+    this.stateUpdateFromData = this.stateUpdateFromData.bind(this);
+    this.clone = this.clone.bind(this);
   }
+
   getBreakdown(timeRange) {
-    window
-      .fetch('/breakdown/' + timeRange.toString())
-      .then(response => response.json())
-      .then(data => {
-        const emissions = data['emission'];
-        console.log('emissions', emissions);
-        const cost = data['cost'];
-        console.log('cost', cost);
-        const offsetNeeded = data['offsetNeeded'];
-        console.log('offsetNeeded', offsetNeeded);
-        const breakdown = data['breakdown'];
-        if (breakdown) {
-          const offsetDonation = breakdown['offsetDonation']['cost'];
-          console.log("offsetDonation", offsetDonation);
-          delete breakdown.offsetDonation;
-          this.setState({ emissions, cost, offsetNeeded, offsetDonation, breakdown, timeRange });
-        }
-      });
+    console.log(this.state.responseCache, timeRange.toString())
+    if (this.state.responseCache[timeRange.toString()]) {
+      console.log("1")
+      this.stateUpdateFromData(this.state.responseCache[timeRange.toString()], timeRange); 
+    } else {
+      console.log("2")
+      window
+        .fetch('/breakdown/' + timeRange.toString())
+        .then(response => response.json())
+        .then(data => this.stateUpdateFromData(data, timeRange));
+    }
   }
+
+  clone(src) {
+    JSON.parse(JSON.stringify(src))
+  }
+
+  stateUpdateFromData(data, timeRange) {
+    const emissions = data['emission'];
+    const cost = data['cost'];
+    const offsetNeeded = data['offsetNeeded'];
+    const breakdown = data['breakdown'];
+    if (breakdown) {
+      const responseCache = this.state.responseCache;
+      responseCache[timeRange.toString()] = data;
+      const offsetDonation = breakdown['offsetDonation']['cost'];
+      this.setState({ responseCache, emissions, cost, offsetNeeded, offsetDonation, breakdown, timeRange });
+    }
+
+  }
+
   componentDidMount() {
     this.getBreakdown(this.state.timeRange);
   }
   render() {
     var data = this.state.breakdown
-      ? Object.keys(this.state.breakdown).map(category => {
+      ? Object.keys(this.state.breakdown).filter(category => category !== 'offsetDonation').map(category => {
           return [category, this.state.breakdown[category]['emissions']];
         })
       : [];
@@ -69,7 +85,7 @@ class Home extends Component {
             />
             <div>
               <Progress emissions={this.state.emissions} offset={this.state.offsetDonation} />
-           </div>
+            </div>
           </div>
         </Flexbox>
         <Footer></Footer>
