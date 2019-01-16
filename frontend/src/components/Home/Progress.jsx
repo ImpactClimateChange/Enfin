@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import styles from '../../styles/Home.module.css';
 import { Progress } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
+// import '../../styles/Progress.module.css';
+import './Progress.css'
 
 class Progess extends Component {
   constructor() {
@@ -16,7 +18,7 @@ class Progess extends Component {
       color: 'red'
     };
     this.emissionsIncrease = this.emissionsIncrease.bind(this);
-    this.offsetIncrease = this.offsetIncrease.bind(this);    
+    this.offsetIncrease = this.offsetIncrease.bind(this);
   }
 
   componentDidMount() {
@@ -25,10 +27,12 @@ class Progess extends Component {
   }
 
   componentWillReceiveProps() {
-    this.setState({emissionsPercent: 0,
-    offsetPercent: 0,
-    emissionsKgDisplay: 0,
-    offsetKgDisplay: 0});
+    this.setState({
+      emissionsPercent: 0,
+      offsetPercent: 0,
+      emissionsKgDisplay: 0,
+      offsetKgDisplay: 0
+    });
     this.emissionsIncrease();
     this.offsetIncrease();
   }
@@ -37,7 +41,7 @@ class Progess extends Component {
     const emissionsPercent = this.props.emissions !== 0 ? this.state.emissionsPercent + 1 : 0;
     var emissionsKgDisplay = Math.floor(
       (this.state.emissionsPercent * (this.props.emissions + this.props.offset)) / 100
-    )
+    );
     const pct = (this.props.emissions / (this.props.emissions + this.props.offset)) * 100;
     if (emissionsPercent >= pct) {
       emissionsKgDisplay = Math.round(this.props.emissions);
@@ -53,7 +57,7 @@ class Progess extends Component {
     const offsetPercent = this.props.offset !== 0 ? this.state.offsetPercent + 1 : 0;
     var offsetKgDisplay = Math.floor(
       (this.state.offsetPercent * (this.props.emissions + this.props.offset)) / 100
-    )
+    );
     const pct = (this.props.offset / (this.props.emissions + this.props.offset)) * 100;
     if (offsetPercent >= pct) {
       offsetKgDisplay = Math.round(this.props.offset);
@@ -71,7 +75,7 @@ class Progess extends Component {
         <Container>
           <Row>
             <Col md={1}>
-              <div className={styles.center} style={{marginRight: "20px"}}>
+              <div className={styles.center} style={{ marginRight: '20px' }}>
                 <h5>Emission</h5>
               </div>
             </Col>
@@ -82,30 +86,26 @@ class Progess extends Component {
             </Col>
             <Col md={1}>
               <div className={styles.percent}>
-                <p>
-                  {this.state.emissionsKgDisplay}
-                </p>
+                <p>{this.state.emissionsKgDisplay}</p>
               </div>
             </Col>
           </Row>
           <Row>
             <Col md={1}>
-              <div className={styles.center} style={{marginRight: "20px"}}>
+              <div className={styles.center} style={{ marginRight: '20px' }}>
                 <h5>Offset</h5>
               </div>
             </Col>
             <Col md={10}>
               <div className={styles.progressBar}>
-                <div style={{}}>
-                  <Progress striped color="success" value={this.state.offsetPercent} />
+                <div>
+                  <Progress striped color="green" value={this.state.offsetPercent} />
                 </div>
               </div>
             </Col>
             <Col md={1}>
               <div className={styles.percent}>
-                <p>
-                  {this.state.offsetKgDisplay}
-                </p>
+                <p>{this.state.offsetKgDisplay}</p>
               </div>
             </Col>
           </Row>
