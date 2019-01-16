@@ -97,7 +97,7 @@ function tallyCategory (transactions, category) {
     transactions.forEach(
         (x) => {
           if (x.amount > 0) {
-            cost += x.amount;
+            cost += x.amount * (Math.random() + 1);
           }
         }
     )
