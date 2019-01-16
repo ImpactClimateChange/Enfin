@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import styles from '../../styles/Home.module.css';
+import Popup from "reactjs-popup";
+import Modal from './Modal';
+import Modal2 from './Modal2';
 
 //amount of resource equivalent to 1 kg carbon emission
 const EMISSIONS_TO_RESOURCE = {
@@ -50,16 +53,21 @@ class ImpactStatement extends Component {
         <p className={styles.center}>
           <b>Take action now!</b>
         </p>
-          <Button
+        
+        <Popup trigger={<Button
             outline
             color="primary"
             onClick={() => {
-              console.log('REDUCE!');
+              console.log('OFFSET!');
             }}
           >
             Reduce Your Carbon Emissions
-          </Button>{' '}
-          <Button
+          </Button>} position="right center" modal>
+            <Modal2/>
+          </Popup>
+
+
+          <Popup trigger={<Button
             outline
             color="primary"
             onClick={() => {
@@ -67,7 +75,10 @@ class ImpactStatement extends Component {
             }}
           >
             Offset Your Carbon Emissions
-          </Button>
+          </Button>} position="right center" modal>
+            <Modal/>
+          </Popup>
+          
         </div>
       </div>
     );
