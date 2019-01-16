@@ -26,15 +26,15 @@ class Home extends Component {
       .then(response => response.json())
       .then(data => {
         const emissions = data['emission'];
-        console.log("emissions", emissions)
+        console.log('emissions', emissions);
         const cost = data['cost'];
-        console.log("cost", cost)
+        console.log('cost', cost);
         const offsetNeeded = data['offsetNeeded'];
-        console.log("offsetNeeded", offsetNeeded)
+        console.log('offsetNeeded', offsetNeeded);
         const breakdown = data['breakdown'];
         const offsetDonation = timeRange === 30 ? 682 : 1457;
         //breakdown['offsetDonation']['cost'];
-        console.log("offsetDonation", offsetDonation);
+        console.log('offsetDonation', offsetDonation);
         delete breakdown.offsetDonation;
         this.setState({ emissions, cost, offsetNeeded, offsetDonation, breakdown, timeRange });
       });
@@ -43,14 +43,11 @@ class Home extends Component {
     this.getBreakdown(this.state.timeRange);
   }
   render() {
-    var data = (this.state.breakdown
-        ? Object.keys(this.state.breakdown).map(category => {
-            return [
-              category,
-              this.state.breakdown[category]['emissions'], 
-            ];
-          })
-        : []);
+    var data = this.state.breakdown
+      ? Object.keys(this.state.breakdown).map(category => {
+          return [category, this.state.breakdown[category]['emissions']];
+        })
+      : [];
 
     return (
       <div>
@@ -58,10 +55,9 @@ class Home extends Component {
           <TimeRange getBreakdown={this.getBreakdown} />
         </div>
 
-        <div>
-        </div>
+        <div />
         <Flexbox minHeight="100vh" justifyContent="space-around">
-          <MyPie data={data}/>
+          <MyPie data={data} />
           <div>
             <ImpactStatement
               emissions={this.state.emissions}
@@ -69,11 +65,10 @@ class Home extends Component {
               timeRange={this.state.timeRange}
             />
             <div>
-              <Progress emissions={this.state.emissions} offset={this.state.offsetDonation}  />
-            </div>
+              <Progress emissions={this.state.emissions} offset={this.state.offsetDonation} />
+           </div>
           </div>
         </Flexbox>
-        
       </div>
     );
   }
