@@ -19,7 +19,7 @@ class Home extends Component {
       offsetDonation: 0,
       breakdown: null,
       timeRange: 30,
-      responseCache: {},
+      responseCache: {}
     };
     this.getBreakdown = this.getBreakdown.bind(this);
     this.stateUpdateFromData = this.stateUpdateFromData.bind(this);
@@ -27,12 +27,12 @@ class Home extends Component {
   }
 
   getBreakdown(timeRange) {
-    console.log(this.state.responseCache, timeRange.toString())
+    console.log(this.state.responseCache, timeRange.toString());
     if (this.state.responseCache[timeRange.toString()]) {
-      console.log("1")
-      this.stateUpdateFromData(this.state.responseCache[timeRange.toString()], timeRange); 
+      console.log('1');
+      this.stateUpdateFromData(this.state.responseCache[timeRange.toString()], timeRange);
     } else {
-      console.log("2")
+      console.log('2');
       window
         .fetch('/breakdown/' + timeRange.toString())
         .then(response => response.json())
@@ -41,7 +41,7 @@ class Home extends Component {
   }
 
   clone(src) {
-    JSON.parse(JSON.stringify(src))
+    JSON.parse(JSON.stringify(src));
   }
 
   stateUpdateFromData(data, timeRange) {
@@ -52,11 +52,18 @@ class Home extends Component {
     if (breakdown) {
       const responseCache = this.state.responseCache;
       responseCache[timeRange.toString()] = data;
-      const offsetDonation = timeRange === 30 ? 672 : 20455
+      const offsetDonation = timeRange === 30 ? 672 : 20455;
       //breakdown['offsetDonation']['cost'];
-      this.setState({ responseCache, emissions, cost, offsetNeeded, offsetDonation, breakdown, timeRange });
+      this.setState({
+        responseCache,
+        emissions,
+        cost,
+        offsetNeeded,
+        offsetDonation,
+        breakdown,
+        timeRange
+      });
     }
-
   }
 
   componentDidMount() {
@@ -64,9 +71,11 @@ class Home extends Component {
   }
   render() {
     var data = this.state.breakdown
-      ? Object.keys(this.state.breakdown).filter(category => category !== 'offsetDonation').map(category => {
-          return [category, this.state.breakdown[category]['emissions']];
-        })
+      ? Object.keys(this.state.breakdown)
+          .filter(category => category !== 'offsetDonation')
+          .map(category => {
+            return [category, this.state.breakdown[category]['emissions']];
+          })
       : [];
 
     return (
@@ -78,7 +87,7 @@ class Home extends Component {
         <div />
         <Flexbox minHeight="100vh" justifyContent="space-around">
           <MyPie data={data} />
-          <div>
+          <div style={{ width: '43%' }}>
             <ImpactStatement
               emissions={this.state.emissions}
               offset={this.state.offsetDonation}
@@ -89,7 +98,7 @@ class Home extends Component {
             </div>
           </div>
         </Flexbox>
-        <Footer></Footer>
+        <Footer />
       </div>
     );
   }

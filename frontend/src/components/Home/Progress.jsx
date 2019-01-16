@@ -79,14 +79,14 @@ class Progess extends Component {
                 <h5>Emission</h5>
               </div>
             </Col>
-            <Col md={10}>
+            <Col md={8}>
               <div className={styles.progressBar}>
                 <Progress striped color="danger" value={this.state.emissionsPercent} />
               </div>
             </Col>
-            <Col md={1}>
+            <Col md={3}>
               <div className={styles.percent}>
-                <p>{this.state.emissionsKgDisplay}</p>
+                <p>{this.state.emissionsKgDisplay} kg CO2</p>
               </div>
             </Col>
           </Row>
@@ -96,16 +96,16 @@ class Progess extends Component {
                 <h5>Offset</h5>
               </div>
             </Col>
-            <Col md={10}>
+            <Col md={8}>
               <div className={styles.progressBar}>
                 <div>
                   <Progress striped color="green" value={this.state.offsetPercent} />
                 </div>
               </div>
             </Col>
-            <Col md={1}>
+            <Col md={3}>
               <div className={styles.percent}>
-                <p>{this.state.offsetKgDisplay}</p>
+                <p>{this.state.offsetKgDisplay} kg CO2</p>
               </div>
             </Col>
           </Row>
