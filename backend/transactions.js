@@ -5,7 +5,7 @@ const CARBON_COST = .00134;
 
 const CATEGORIES = {
    "airTravel": {
-      "mult": (9),
+      "mult": (2),
       "includeTypes": ["Airlines and Aviation Services"],
       "excludeTypes": []
   },
