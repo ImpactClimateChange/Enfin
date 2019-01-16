@@ -49,11 +49,7 @@ class ImpactStatement extends Component {
           Planting {Math.round(this.augmentedEmissions('tree'))} trees would{' '}
           entirely absorb these carbon emissions. <br />
         </p>
-        <div className={styles.dataSection}>
-        <p className={styles.center}>
-          <b>Take action now!</b>
-        </p>
-        
+        <div>
         <Popup trigger={<Button
             outline
             color="primary"
