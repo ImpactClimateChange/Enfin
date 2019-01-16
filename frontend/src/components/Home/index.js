@@ -9,6 +9,18 @@ import ImpactStatement from './ImpactStatement';
 import Footer from '../Splash/Footer';
 // import Modal from './Modal';
 
+const SHOW_NAME = {
+  "airTravel": "Air Travel",
+  "carTravel": "Car Travel",
+  "utility": "Utilities",
+  "grocery": "Groceries",
+  "fastFood": "Fast Food",
+  "resturantOther": "Resturants",
+  "shopping": "Shopping",
+  "other": "Other",
+}
+
+
 class Home extends Component {
   constructor() {
     super();
@@ -64,7 +76,7 @@ class Home extends Component {
   render() {
     var data = this.state.breakdown
       ? Object.keys(this.state.breakdown).filter(category => category !== 'offsetDonation').map(category => {
-          return [category, this.state.breakdown[category]['emissions']];
+          return [SHOW_NAME[category], this.state.breakdown[category]['emissions']];
         })
       : [];
 
