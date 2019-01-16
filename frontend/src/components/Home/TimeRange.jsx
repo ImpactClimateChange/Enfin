@@ -19,19 +19,19 @@ class TimeRange extends Component {
   render() {
     return (
       <div className={styles.timeRange}>
-        <Button outline color="primary" onClick={() => {this.props.getBreakdown(30); this.props.getBreakdown(30);}}>
+        <Button outline color="primary" onClick={() => {this.props.getBreakdown(30); setTimeout(() => this.props.getBreakdown(30), 1000);}}>
           1 Month
         </Button>
-        <Button outline color="primary" onClick={() => {this.props.getBreakdown(90); this.props.getBreakdown(90);}}>
+        <Button outline color="primary" onClick={() => {this.props.getBreakdown(90); setTimeout(() => this.props.getBreakdown(90), 1000);}}>
           3 Months
         </Button>
-        <Button outline color="primary" onClick={() => {this.props.getBreakdown(180); this.props.getBreakdown(180);}}>
+        <Button outline color="primary" onClick={() => {this.props.getBreakdown(180); setTimeout(() => this.props.getBreakdown(180), 1000);}}>
           6 Months
         </Button>
-        <Button outline color="primary" onClick={() => {this.props.getBreakdown(365); this.props.getBreakdown(365);}}>
+        <Button outline color="primary" onClick={() => {this.props.getBreakdown(365); setTimeout(() => this.props.getBreakdown(365), 1000);}}>
           1 Year
         </Button>
-        <Button outline color="primary" onClick={() => {this.props.getBreakdown(365); this.props.getBreakdown(365);}}>
+        <Button outline color="primary" onClick={() => {this.props.getBreakdown(600); setTimeout(() => this.props.getBreakdown(600), 1000);}}>
           All time
         </Button>
       </div>
