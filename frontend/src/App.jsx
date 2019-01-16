@@ -22,7 +22,6 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Header
-            displayPopup={this.displayPopup}
             onAuth={this.fakeAuth}
             logout={this.fakeLogout}
             user={this.state.user}
