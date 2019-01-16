@@ -22,9 +22,21 @@
 }
 
 .footer {
-    float: left;
-    margin-left: 20px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin-left: 20px;
+  /*background-color: red;*/
+  /*color: white;*/
+  /*text-align: center;*/
+
 }
 .dataSection {
     margin: 50px;
+}
+
+
+Button {
+    margin: 1px;
 }
