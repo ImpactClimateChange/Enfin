@@ -64,7 +64,7 @@ class Home extends Component {
   }
   render() {
     var data = this.state.breakdown
-      ? Object.keys(this.state.breakdown).filter(category => category !== 'offsetDonations').map(category => {
+      ? Object.keys(this.state.breakdown).filter(category => category !== 'offsetDonation').map(category => {
           return [category, this.state.breakdown[category]['emissions']];
         })
       : [];
