@@ -6,6 +6,8 @@ import Progress from './Progress';
 import MyPie from './MyPie';
 import TimeRange from './TimeRange';
 import ImpactStatement from './ImpactStatement';
+import Footer from '../Splash/Footer';
+// import Modal from './Modal';
 
 class Home extends Component {
   constructor() {
@@ -68,7 +70,7 @@ class Home extends Component {
             </div>
           </div>
         </Flexbox>
-        
+        <Footer></Footer>
       </div>
     );
   }
