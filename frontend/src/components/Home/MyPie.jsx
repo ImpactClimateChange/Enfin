@@ -9,7 +9,7 @@ class MyPie extends Component {
   render() {
     return (
       <div className={styles.dataSection} element="header" height="60px">
-        <h3>Emission Breakdown</h3>
+        <h3 className={styles.center}>Emission Breakdown</h3>
         <PieChart 
           data={this.props.data} 
           donut={true} 

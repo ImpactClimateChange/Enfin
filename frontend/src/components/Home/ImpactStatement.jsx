@@ -25,7 +25,7 @@ class ImpactStatement extends Component {
   render() {
     return (
       <div className={styles.dataSection}>
-        <h3>Your Carbon Impact</h3>
+        <h3 className={styles.center}>Your Carbon Impact</h3>
         <p>
           In the last {Math.round(this.props.timeRange)} days, your spending has caused{' '}
           <b>{Math.round(this.augmentedEmissions())} kg of CO2 emissions.</b>
