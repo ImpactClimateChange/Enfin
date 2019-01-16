@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: { role: 'admin' }
+      user: null
     };
   }
   componentWillMount(props) {
@@ -21,12 +21,13 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Header
-            onAuth={this.fakeAuth}
-            logout={this.fakeLogout}
+          <Header onAuth={this.fakeAuth} logout={this.fakeLogout} user={this.state.user} />
+          <Route
+            exact
+            path="/"
+            component={this.state.user ? Home : Splash}
             user={this.state.user}
           />
-          <Route exact path="/" component={this.state.user ? Home : Splash} user={this.state.user}/>
           <Route exact path="/about" component={About} />
           <Route exact path="/methodology" component={Methodology} />
         </div>
