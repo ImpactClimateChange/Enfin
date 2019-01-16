@@ -97,7 +97,9 @@ function tallyCategory (transactions, category) {
     transactions.forEach(
         (x) => {
           if (x.amount > 0) {
-            cost += x.amount;
+            if(Math.floor(Math.random() * 2) == 0) { // RANDOMLY INCLUDE ONLY HALF OF TRANSACTIONS FOR FAKE DATA
+              cost += x.amount;
+            }
           }
         }
     )
