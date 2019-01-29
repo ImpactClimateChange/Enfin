@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import styles from '../../styles/Home.module.css';
 import Popup from "reactjs-popup";
-import Modal from './Modal';
+import OffsetModal from './OffsetModal';
 import Modal2 from './Modal2';
 
 //amount of resource equivalent to 1 kg carbon emission
@@ -72,7 +72,7 @@ class ImpactStatement extends Component {
           >
             Offset Your Carbon Emissions
           </Button>} position="right center" modal>
-            <Modal/>
+            <OffsetModal/>
           </Popup>
           
         </div>
