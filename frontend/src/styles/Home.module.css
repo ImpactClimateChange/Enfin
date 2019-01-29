@@ -14,12 +14,14 @@
     display: flex;
     justify-content: center;
     margin-top: -4px;
+    flex-wrap: wrap;
 }
 
 .centerNoFlex {
     align-content: center;
     text-align: center;
     justify-content: center;
+    margin: 20px;
     margin-top: -4px;
 }
 
