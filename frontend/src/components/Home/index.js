@@ -64,8 +64,7 @@ class Home extends Component {
     if (breakdown) {
       const responseCache = this.state.responseCache;
       responseCache[timeRange.toString()] = data;
-      const offsetDonation = timeRange === 30 ? 672 : 11325;
-      //breakdown['offsetDonation']['cost'];
+      const offsetDonation = breakdown['offsetDonation']['cost'];
       this.setState({
         responseCache,
         emissions,

@@ -94,7 +94,7 @@ app.get('/transactions', function(request, response, next) {
 });
 
 app.get('/transactions/:days', function(request, response, next) {
-  // Pull transactions for the Item for the last 30 days
+  // Pull transactions for the Item for the last X days
   const startDate = moment().subtract(request.params.days, 'days').format('YYYY-MM-DD');
   const endDate = moment().format('YYYY-MM-DD');
   client.getTransactions(ACCESS_TOKEN, startDate, endDate, {

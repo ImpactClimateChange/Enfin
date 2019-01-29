@@ -5,7 +5,7 @@ const CARBON_COST = .00134;
 
 const CATEGORIES = {
    "airTravel": {
-      "mult": (2),
+      "mult": (9),
       "includeTypes": ["Airlines and Aviation Services"],
       "excludeTypes": []
   },
@@ -97,7 +97,7 @@ function tallyCategory (transactions, category) {
     transactions.forEach(
         (x) => {
           if (x.amount > 0) {
-            cost += x.amount * (Math.random() + 1);
+            cost += x.amount;
           }
         }
     )
