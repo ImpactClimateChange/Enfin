@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import styles from '../../styles/Home.module.css';
-import { Button } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
 import IMAGES from '../../images';
 import Flexbox from 'flexbox-react';
 import Charity from './Charity'
+import images from '../../images';
 
 const CHARITIES = [
-  {name: "Cool Earth", image: IMAGES.james, ratePerKg: 0.00134, reference: ""},
-  {name: "Vegan Outreach", image: IMAGES.abe, ratePerKg: 0.00691, reference: ""},
-  {name: "Solar Aid", image: IMAGES.isabelle, ratePerKg: 0.0100, reference: ""},
+  {name: "Cool Earth", image: IMAGES.coolEarth, ratePerKg: 0.00134, reference: ""},
+  {name: "Vegan Outreach", image: IMAGES.veganOutreach, ratePerKg: 0.00691, reference: ""},
+  {name: "Solar Aid", image: IMAGES.solarAid, ratePerKg: 0.0100, reference: ""},
+  {name: "Enfin", image: images.enfin, ratePerKg: 0.100, reference: ""},
 ]
 
 
-class OffsetModal extends React.Component {
+class OffsetModal extends Component {
   render() {
     return (
       <div>
