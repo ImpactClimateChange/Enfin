@@ -14,10 +14,10 @@ class Charity extends Component {
             <CardSubtitle className={styles.charityRate}>${this.props.info.ratePerKg} per kg CO2</CardSubtitle>
             <CardText>{this.props.info.blurb}</CardText>
             <a href={this.props.info.donateLink}>
-              <Button>Donate</Button>
+            <Button>Donate</Button>
             </a>
             <a href={this.props.info.infoLink}>
-              <Button>Learn More</Button>
+            <Button outline color="primary">Learn More</Button>
             </a>
           </CardBody>
         </Card>
