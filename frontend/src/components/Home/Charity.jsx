@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
 import styles from '../../styles/Home.module.css';
-import { Button } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 
 class Charity extends Component {
   render() {
-    return  <div>
-              <h5 className={styles.centerNoFlex}>{this.props.info.name}</h5>
-              <div className={styles.centerNoFlex}><img src={this.props.info.image} width="200px" height="200px" alt={this.props.info.name} /></div>
-              <div className={styles.centerNoFlex}><Button>Donate</Button></div>
-            </div>;
+    return <div>
+        <Card className={styles.charityCard}>
+          <CardImg top width="100%" src={this.props.info.image} alt={this.props.info.name} />
+          <CardBody>
+            {/* <CardTitle>{this.props.info.name}</CardTitle> */}
+            <CardSubtitle className={styles.charityRate}>${this.props.info.ratePerKg} per kg CO2</CardSubtitle>
+            <CardText>{this.props.info.blurb}</CardText>
+            <a href={this.props.info.donateLink}>
+              <Button>Donate</Button>
+            </a>
+            <a href={this.props.info.infoLink}>
+              <Button>Learn More</Button>
+            </a>
+          </CardBody>
+        </Card>
+      </div>;
   }
 }
 

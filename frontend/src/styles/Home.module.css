@@ -51,7 +51,28 @@
     margin-top: 50px;
 }
 
+.charityCard {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    width: 300px;
+}
+
+.charityRate {
+    text-align: center;
+    background-color:#42f4b9;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.modalTitle {
+    margin: 20px;
+    color: cornflowerblue;
+    font-weight: bolder;
+    text-align: center;
+}
 
 Button {
-    margin: 1px;
+    margin: 3px;
 }
