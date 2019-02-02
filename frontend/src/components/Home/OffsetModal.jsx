@@ -29,6 +29,7 @@ const CHARITIES = [
   },
 ]
 
+//TODO: retrieve offset charity list from backend with request rather than having them hard coded in twice
 class OffsetModal extends Component {
   render() {
     return <div className={styles.modal}>
@@ -40,7 +41,7 @@ class OffsetModal extends Component {
           How does offsetting work?
         </Button>
         </p>
-        <hr/>
+        <hr></hr>
 
         <Flexbox className={styles.center}>
           {CHARITIES.map(charInfo => {
