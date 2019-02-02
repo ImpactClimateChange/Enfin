@@ -2,6 +2,7 @@
 
 const util = require('util');
 const transactions = require('./transactions');
+const charities = require('./charities')
 const envvar = require('envvar');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -137,6 +138,10 @@ app.get('/breakdown/:days', function(request, response, next) {
     }
   });
 });
+
+app.get('/charities', function(request, response, next) {
+  response.json({error: null, charities: charities});
+}); 
 
 const server = app.listen(APP_PORT, function() {
   console.log('plaid-quickstart server listening on port ' + APP_PORT);
