@@ -1,4 +1,5 @@
-var util = require('util');
+const util = require('util');
+const CHARITIES = require('./charities');
 
 // US dollars required to offset 1 kg^2 of CO2
 const CARBON_COST = .00134;
@@ -44,23 +45,19 @@ const CATEGORIES = {
       "includeTypes": ["*"],
       "excludeTypes": ["Environmental","Airlines and Aviation Services", "Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses","Utilities","Supermarkets and Groceries","Fast Food","Food and Drink","Shops","Transfer","Payment"]
   },
-  "offsetDonation": {
-      "mult": (0),
-      "includeTypes": ["Environmental"],
-      "excludeTypes": []
-  },
 }
 
 function categorizeTransactions(transactionsResponse) {
-  var transactions  = transactionsResponse.transactions;
-  var selectAndTally = (transactions, type, includeType, excludeType) => {
+  const transactions  = transactionsResponse.transactions;
+  const selectAndTally = (transactions, type, includeType, excludeType) => {
           return tallyCategory(selectTransactions(transactions, includeType, excludeType), type);
         }
-  var result = {}
+  let result = {}
 
   Object.keys(CATEGORIES).forEach((category) => {
     result[category] = selectAndTally(transactions, category, CATEGORIES[category]["includeTypes"], CATEGORIES[category]["excludeTypes"]);
   });
+  result["offsetDonation"] = selectAndTallyOffsets(transactions);
   return result;
 }
 
@@ -88,10 +85,35 @@ function selectTransactions(transactions, includeTypes, excludeTypes) {
   );
 }
 
+// Given the full list of transactions and the list of
+// viable charities, returns the total expenditure on 
+// offset, the total negative emissions, and all offset transactions
+function selectAndTallyOffsets(transactions) {
+  selected = [];
+  cost = 0;
+  emissions = 0;
+  transactions.forEach(
+    (transaction) => {
+      match = CHARITIES.find(charity => transaction.name.includes(charity.name)); 
+      if (match){
+          selected.push(transaction);
+          cost += transaction.amount;
+          emissions -= transaction.amount / match.ratePerKg;
+      }
+    });
+  return ({
+    "cost": cost,
+    "emissions": emissions,
+    "transactions": selected
+  });
+}
+
 //sums the total cost of a category and calculates:
 //   total carbon cost
 //   total dollar amt
 //   + same list of transactions
+// Assumes that transactions param already contains only and all
+// transactions from the given category.
 function tallyCategory (transactions, category) {
     var cost = 0;
     transactions.forEach(
