@@ -9,4 +9,4 @@ import coolEarth from './charities/coolearth-logo.png'
 import solarAid from './charities/SolarAid.jpg'
 import veganOutreach from './charities/veganOutreach.png'
 
-export default {james,abe, isabelle, chris, enfin, coolEarth, solarAid, veganOutreach};
+export default {james,abe, isabelle, chris, "Enfin": enfin, "Cool Earth": coolEarth, "Solar Aid": solarAid, "Vegan Outreach": veganOutreach};
