@@ -4,7 +4,7 @@ const charities = [
         ratePerKg: 0.00134,
         reference: "",
         blurb:
-            "Cool Earth is perhaps the most effective carbon offset charity. Their mission is to economically empower rural amazonian communities, relieving pressure to sell their forest land to loggers. They have a proven track-record of preventing amazonian deforestation.",
+            "Cool Earth is perhaps the most effective carbon offset charity. Their mission is to economically empower rural amazonian communities, relieving the pressure to sell forest land to loggers. They have a proven track-record of preventing amazonian deforestation.",
         donateLink: "https://www.coolearth.org/get-involved/donate-cool-earth/",
         infoLink: "https://www.coolearth.org/what-we-do/our-approach/"
     },
