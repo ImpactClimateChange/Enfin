@@ -86,8 +86,9 @@ function selectTransactions(transactions, includeTypes, excludeTypes) {
 }
 
 // Given the full list of transactions and the list of
-// viable charities, returns the total expenditure on 
-// offset, the total negative emissions, and all offset transactions
+// viable charities, classifies all the approved offset purchases, and
+// returns an object which details the total expenditure on offset, 
+// the total negative emissions, and a list of the found offset transactions
 function selectAndTallyOffsets(transactions) {
   selected = [];
   cost = 0;
@@ -131,8 +132,4 @@ function tallyCategory (transactions, category) {
     };
 }
 
-function offsetCost(emission) {
-  return emission * CARBON_COST;
-}
-
-module.exports = {categorizeTransactions, offsetCost};
+module.exports = {categorizeTransactions};
