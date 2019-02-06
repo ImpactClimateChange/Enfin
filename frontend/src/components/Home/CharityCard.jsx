@@ -18,10 +18,10 @@ class CharityCard extends Component {
                   <p>
                     <b>Donations to {this.props.name} cannot be accepted at this time.</b>
                   </p>
-                  <a target="_blank" href={this.props.donateLink}>
+                  <a target="_blank" rel="noopener noreferrer" href={this.props.donateLink}>
                     <Button disabled={true}>Donate</Button>
                   </a>
-                  <a target="_blank" href={this.props.infoLink}>
+                  <a target="_blank" rel="noopener noreferrer" href={this.props.infoLink}>
                     <Button disabled={true} outline color="primary">
                       Learn More
                         </Button>
@@ -29,10 +29,10 @@ class CharityCard extends Component {
                 </div>
               ) : (
                 <div>
-                  <a target="_blank" href={this.props.donateLink}>
+                  <a target="_blank" rel="noopener noreferrer" href={this.props.donateLink}>
                     <Button>Donate</Button>
                   </a>
-                  <a target="_blank" href={this.props.infoLink}>
+                  <a target="_blank" rel="noopener noreferrer" href={this.props.infoLink}>
                     <Button outline color="primary">Learn More</Button>
                   </a>
                 </div>
