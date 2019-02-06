@@ -12,7 +12,7 @@ class Charity extends Component {
           <CardBody>
             <CardSubtitle className={styles.charityRate}>${this.props.ratePerKg} per kg CO2</CardSubtitle>
             <CardText>{this.props.blurb}</CardText>
-            {/* Conditionally render error message and disable buttons */}
+            {/* Render error message and disabled buttons if disabled property is true */}
             { this.props.disabled ? (
               <div>
                 <p>
