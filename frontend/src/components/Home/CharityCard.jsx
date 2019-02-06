@@ -4,7 +4,7 @@ import { Card, CardImg, CardText, CardBody,
   CardSubtitle, Button } from 'reactstrap';
 
 
-class Charity extends Component {
+class CharityCard extends Component {
   render() {
     return <div>
         <Card className={styles.charityCard}>
@@ -14,21 +14,20 @@ class Charity extends Component {
             <CardText>{this.props.blurb}</CardText>
             {/* Render error message and disabled buttons if disabled property is true */}
             { this.props.disabled ? (
-              <div>
-                <p>
-                  <b>Donations to {this.props.name} cannot be accepted at this time.</b>
-                </p>
-                <a href={this.props.donateLink}>
-                  <Button disabled={true}>Donate</Button>
-                </a>
-                <a href={this.props.infoLink}>
-                  <Button disabled={true} outline color="primary">
-                    Learn More
-                      </Button>
-                </a>
-              </div>
-              
-            ) : (
+                <div>
+                  <p>
+                    <b>Donations to {this.props.name} cannot be accepted at this time.</b>
+                  </p>
+                  <a href={this.props.donateLink}>
+                    <Button disabled={true}>Donate</Button>
+                  </a>
+                  <a href={this.props.infoLink}>
+                    <Button disabled={true} outline color="primary">
+                      Learn More
+                        </Button>
+                  </a>
+                </div>
+              ) : (
                 <div>
                   <a href={this.props.donateLink}>
                     <Button>Donate</Button>
@@ -44,4 +43,4 @@ class Charity extends Component {
   }
 }
 
-export default Charity;
+export default CharityCard;

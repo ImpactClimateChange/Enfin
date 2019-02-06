@@ -16,7 +16,7 @@ const PLAID_PRODUCTS = "transactions";
 const PLAID_ENV = "sandbox";
 
 // Helper functions and constants
-const CHARITIES = require("./charities");
+const CHARITIES = require("./charities").charities;
 const transactions = require("./transactions");
 
 // We store the access_token in memory - in production, store it in a secure

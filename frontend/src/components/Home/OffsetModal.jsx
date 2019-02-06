@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from '../../styles/Home.module.css';
 import IMAGES from '../../images';
 import Flexbox from 'flexbox-react';
-import Charity from './Charity';
+import CharityCard from './CharityCard';
 import { Button } from 'reactstrap';
 
 class OffsetModal extends Component {
@@ -11,7 +11,8 @@ class OffsetModal extends Component {
     this.state = {
       charityList: []
     }
-    
+
+    //get information about charities to display
     window.fetch("/charities")
       .then(response => response.json())
       .then(data => this.setState({ charityList: data.charities }));
@@ -35,7 +36,7 @@ class OffsetModal extends Component {
             let isEnfin = charInfo.name === 'Enfin';
             let charImage = IMAGES[charInfo.name];
             return (
-              <Charity
+              <CharityCard
                 name={charInfo.name}
                 blurb={charInfo.blurb}
                 ratePerKg={charInfo.ratePerKg}

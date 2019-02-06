@@ -1,5 +1,5 @@
 const util = require('util');
-const CHARITIES = require('./charities');
+const CHARITIES = require('./charities').charities;
 
 // US dollars required to offset 1 kg^2 of CO2
 const CARBON_COST = .00134;

@@ -37,4 +37,4 @@ const charities = [
     }
 ];
 
-module.exports = charities;
+module.exports = {charities};
