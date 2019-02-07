@@ -1,7 +1,6 @@
 'use strict';
 
 const util = require('util');
-const transactions = require('./transactions');
 const envvar = require('envvar');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -15,6 +14,10 @@ const PLAID_SECRET = "ba3a91b90aba2368be1422d4a89128";
 const PLAID_PUBLIC_KEY = "dc14e823249a9b78995fc65b53f0c6";
 const PLAID_PRODUCTS = "transactions";
 const PLAID_ENV = "sandbox";
+
+// Helper functions and constants
+const CHARITIES = require("./charities").charities;
+const transactions = require("./transactions");
 
 // We store the access_token in memory - in production, store it in a secure
 // persistent data store
@@ -132,11 +135,14 @@ app.get('/breakdown/:days', function(request, response, next) {
           (acc, key) => {return acc + categorizedTransactions[key]['cost']}, 0);
       const emission = Object.keys(categorizedTransactions).reduce(
           (acc, key) => {return acc + categorizedTransactions[key]['emissions']}, 0);
-      const offset = transactions.offsetCost(emission);
-      response.json({error: null, cost: cost, emission: emission, offsetNeeded: offset, breakdown: categorizedTransactions});
+      response.json({error: null, cost: cost, emission: emission, breakdown: categorizedTransactions});
     }
   });
 });
+
+app.get('/charities', function(request, response, next) {
+  response.json({error: null, charities: CHARITIES});
+}); 
 
 const server = app.listen(APP_PORT, function() {
   console.log('plaid-quickstart server listening on port ' + APP_PORT);

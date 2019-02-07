@@ -19,10 +19,10 @@ class Headshots extends Component {
           <h2>Meet the team</h2>
           <Container fluid style={{ lineHeight: '32px' }}>
             <Row debug>
-              <Col debug><img src={IMAGES[0]} width='250px' alt='James'/></Col>
-              <Col debug><img src={IMAGES[1]} width='250px' alt='Abe'/></Col>
-              <Col debug><img src={IMAGES[2]} width='250px' alt='Isabelle'/></Col>
-              <Col debug><img src={IMAGES[3]} width='250px' alt='Chris'/></Col>
+              <Col debug><img src={IMAGES.james} width='250px' alt='James'/></Col>
+              <Col debug><img src={IMAGES.abe} width='250px' alt='Abe'/></Col>
+              <Col debug><img src={IMAGES.isabelle} width='250px' alt='Isabelle'/></Col>
+              <Col debug><img src={IMAGES.chris} width='250px' alt='Chris'/></Col>
             </Row>
             <br />
             <Row debug>

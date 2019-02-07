@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import styles from '../../styles/Home.module.css';
-import Popup from "reactjs-popup";
-import Modal from './Modal';
+import CustomModal from './CustomModal';
+import Popup from 'reactjs-popup';
+import OffsetShowcase from './OffsetShowcase';
 import Modal2 from './Modal2';
+import Flexbox from 'flexbox-react';
 
 //amount of resource equivalent to 1 kg carbon emission
 const EMISSIONS_TO_RESOURCE = {
@@ -19,7 +21,7 @@ class ImpactStatement extends Component {
     this.augmentedEmissions = this.augmentedEmissions.bind(this);
   }
   augmentedEmissions(type) {
-    const result = (this.props.emissions - this.props.offset);
+    const result = this.props.emissions - this.props.offset;
     return type ? EMISSIONS_TO_RESOURCE[type] * result : result;
   }
   render() {
@@ -33,49 +35,27 @@ class ImpactStatement extends Component {
         <p>That's equivalent to: </p>
         <ul>
           <li>
-            Keeping {Math.round(this.augmentedEmissions('lightbulb_years'))}{' '}
-            lightbulbs continuously on for a year
+            Keeping {Math.round(this.augmentedEmissions('lightbulb_years'))} lightbulbs continuously
+            on for a year
           </li>
           <li>
-            Powering New York City for{' '}
-            {this.augmentedEmissions('nyc_seconds').toFixed(2)} seconds
+            Powering New York City for {this.augmentedEmissions('nyc_seconds').toFixed(2)} seconds
           </li>
-          <li>
-            Driving an average car{' '}
-            {Math.round(this.augmentedEmissions('car_miles'))} miles
-          </li>
+          <li>Driving an average car {Math.round(this.augmentedEmissions('car_miles'))} miles</li>
         </ul>
         <p>
-          Planting {Math.round(this.augmentedEmissions('tree'))} trees would{' '}
-          entirely absorb these carbon emissions. <br />
+          Planting {Math.round(this.augmentedEmissions('tree'))} trees would entirely absorb these
+          carbon emissions. <br />
         </p>
-        <div>
-        <Popup trigger={<Button
-            outline
-            color="primary"
-            onClick={() => {
-              console.log('OFFSET!');
-            }}
-          >
-            Reduce Your Carbon Emissions
-          </Button>} position="right center" modal>
-            <Modal2/>
-          </Popup>
+        <Flexbox>
+          <CustomModal buttonName="Reduce Your Emissions" header="">
+            <Modal2 />
+          </CustomModal>
 
-
-          <Popup trigger={<Button
-            outline
-            color="primary"
-            onClick={() => {
-              console.log('OFFSET!');
-            }}
-          >
-            Offset Your Carbon Emissions
-          </Button>} position="right center" modal>
-            <Modal/>
-          </Popup>
-          
-        </div>
+          <CustomModal buttonName="Offset Your Emissions" header="Carbon Offset Charities">
+            <OffsetShowcase />
+          </CustomModal>
+        </Flexbox>
       </div>
     );
   }

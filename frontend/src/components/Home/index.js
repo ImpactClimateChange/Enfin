@@ -27,7 +27,6 @@ class Home extends Component {
     this.state = {
       emissions: 0,
       cost: 0,
-      offsetNeeded: 0,
       offsetDonation: 0,
       breakdown: null,
       timeRange: 30,
@@ -59,7 +58,6 @@ class Home extends Component {
   stateUpdateFromData(data, timeRange) {
     const emissions = data['emission'];
     const cost = data['cost'];
-    const offsetNeeded = data['offsetNeeded'];
     const breakdown = data['breakdown'];
     if (breakdown) {
       const responseCache = this.state.responseCache;
@@ -69,7 +67,6 @@ class Home extends Component {
         responseCache,
         emissions,
         cost,
-        offsetNeeded,
         offsetDonation,
         breakdown,
         timeRange
