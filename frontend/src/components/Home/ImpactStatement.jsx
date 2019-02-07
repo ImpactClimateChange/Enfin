@@ -7,7 +7,6 @@ import OffsetShowcase from './OffsetShowcase';
 import Modal2 from './Modal2';
 import Flexbox from 'flexbox-react';
 
-
 //amount of resource equivalent to 1 kg carbon emission
 const EMISSIONS_TO_RESOURCE = {
   tree: 1 / 500, //1 tree life == 500 kg carbon sequestration
@@ -22,7 +21,7 @@ class ImpactStatement extends Component {
     this.augmentedEmissions = this.augmentedEmissions.bind(this);
   }
   augmentedEmissions(type) {
-    const result = (this.props.emissions - this.props.offset);
+    const result = this.props.emissions - this.props.offset;
     return type ? EMISSIONS_TO_RESOURCE[type] * result : result;
   }
   render() {
@@ -36,35 +35,26 @@ class ImpactStatement extends Component {
         <p>That's equivalent to: </p>
         <ul>
           <li>
-            Keeping {Math.round(this.augmentedEmissions('lightbulb_years'))}{' '}
-            lightbulbs continuously on for a year
+            Keeping {Math.round(this.augmentedEmissions('lightbulb_years'))} lightbulbs continuously
+            on for a year
           </li>
           <li>
-            Powering New York City for{' '}
-            {this.augmentedEmissions('nyc_seconds').toFixed(2)} seconds
+            Powering New York City for {this.augmentedEmissions('nyc_seconds').toFixed(2)} seconds
           </li>
-          <li>
-            Driving an average car{' '}
-            {Math.round(this.augmentedEmissions('car_miles'))} miles
-          </li>
+          <li>Driving an average car {Math.round(this.augmentedEmissions('car_miles'))} miles</li>
         </ul>
         <p>
-          Planting {Math.round(this.augmentedEmissions('tree'))} trees would{' '}
-          entirely absorb these carbon emissions. <br />
+          Planting {Math.round(this.augmentedEmissions('tree'))} trees would entirely absorb these
+          carbon emissions. <br />
         </p>
         <Flexbox>
-          <CustomModal 
-            buttonName="Reduce Your Emissions"
-            header="">
-            <Modal2/>
+          <CustomModal buttonName="Reduce Your Emissions" header="">
+            <Modal2 />
           </CustomModal>
 
-          <CustomModal 
-            buttonName="Offset Your Emissions"
-            header="Carbon Offset Charities"
-            >
-            <OffsetShowcase/>
-          </CustomModal>    
+          <CustomModal buttonName="Offset Your Emissions" header="Carbon Offset Charities">
+            <OffsetShowcase />
+          </CustomModal>
         </Flexbox>
       </div>
     );
