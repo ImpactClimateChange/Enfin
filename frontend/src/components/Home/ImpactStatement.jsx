@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import styles from '../../styles/Home.module.css';
-import Popup from "reactjs-popup";
-import OffsetModal from './OffsetModal';
+import CustomModal from './CustomModal';
+import Popup from 'reactjs-popup';
+import OffsetShowcase from './OffsetShowcase';
 import Modal2 from './Modal2';
+import Flexbox from 'flexbox-react';
+
 
 //amount of resource equivalent to 1 kg carbon emission
 const EMISSIONS_TO_RESOURCE = {
@@ -49,33 +52,20 @@ class ImpactStatement extends Component {
           Planting {Math.round(this.augmentedEmissions('tree'))} trees would{' '}
           entirely absorb these carbon emissions. <br />
         </p>
-        <div>
-        <Popup trigger={<Button
-            outline
-            color="primary"
-            onClick={() => {
-              console.log('OFFSET!');
-            }}
-          >
-            Reduce Your Carbon Emissions
-          </Button>} position="right center" modal>
+        <Flexbox>
+          <CustomModal 
+            buttonName="Reduce Your Emissions"
+            header="">
             <Modal2/>
-          </Popup>
+          </CustomModal>
 
-
-          <Popup trigger={<Button
-            outline
-            color="primary"
-            onClick={() => {
-              console.log('OFFSET!');
-            }}
-          >
-            Offset Your Carbon Emissions
-          </Button>} position="right center" modal>
-            <OffsetModal/>
-          </Popup>
-          
-        </div>
+          <CustomModal 
+            buttonName="Offset Your Emissions"
+            header="Carbon Offset Charities"
+            >
+            <OffsetShowcase/>
+          </CustomModal>    
+        </Flexbox>
       </div>
     );
   }
