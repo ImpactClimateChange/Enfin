@@ -47,7 +47,7 @@ class ImpactStatement extends Component {
         </p>
         <Flexbox>
           <CustomModal buttonName="Reduce Your Emissions" header="">
-            <ReductionSuggestions />
+            <ReductionSuggestions breakdown={this.props.breakdown} />
           </CustomModal>
 
           <CustomModal buttonName="Offset Your Emissions" header="Carbon Offset Charities">

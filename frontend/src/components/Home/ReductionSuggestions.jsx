@@ -7,6 +7,9 @@ class ReductionSuggestions extends Component {
       return (
         <div>
         <h2>Reduce your Carbon Emissions</h2>
+        <p>
+          {JSON.stringify(this.props.breakdown)}
+        </p>
         <h4>Consider following these recommendations</h4>
         <ul>
             <li>Limit your air travel</li>
