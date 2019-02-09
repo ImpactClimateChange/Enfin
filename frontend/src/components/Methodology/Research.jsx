@@ -115,10 +115,9 @@ class Research extends Component {
                 purchases.
               </p>
               <p>
-                Gasoline presents a simple example, but the same general procedure can be used for
-                almost any spending category to find a good approximation for the emissions
-                generated per dollar spent -- provided that category is narrow enough. See below our
-                conversion rates and rationale for each spending category that we support.
+                Gasoline is a simple example, but the same general procedure can be used for
+                almost any spending category, provided that category is narrow enough. Below is listed our
+                conversion rates and rationale for each supported spending category.
               </p>
               <div>
                 {
