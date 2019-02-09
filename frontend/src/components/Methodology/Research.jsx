@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import styles from '../../styles/Splash.module.css';
 import CategoryRationale from './CategoryRationale';
+import CharityRationale from './CharityRationale';
 
 class Research extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      categoryList: []
+      categoryList: [],
+      charityList: []
     };
 
-    //get information about charities to display
+    //get information about categories to display
     window
       .fetch('/categories')
       .then(response => response.json())
-      .then(data => this.setState({ categoryList: data.categories }));
+      .then(data => this.setState({ categoryList: data.categories, charityList: this.state.charityList }));
+      
+    //get information about charites to display
+    window
+      .fetch('/charities')
+      .then(response => response.json())
+      .then(data => this.setState({ charityList: data.charities, categoryList: this.state.categoryList }));
   }
 
   render() {
@@ -142,21 +150,18 @@ class Research extends Component {
                 pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
                 deserunt mollit anim id est laborum.
               </p>
-              <div id="CoolEarth" className={styles.descriptionInnerInner}>
-                <h4>Cool Earth</h4>
-                <p>the argument and data</p>
-              </div>
-              <div id="VeganOutreach" className={styles.descriptionInnerInner}>
-                <h4>Vegan Outreach</h4>
-                <p>the argument and data</p>
-              </div>
-              <div id="SolarAid" className={styles.descriptionInnerInner}>
-                <h4>Solar Aid</h4>
-                <p>the argument and data</p>
-              </div>
-              <div id="EnfinRate" className={styles.descriptionInnerInner}>
-                <h4>Enfin</h4>
-                <p>the argument and data</p>
+              <div>
+                {
+                  this.state.charityList.map(charity => {
+                    return <CharityRationale
+                      key={charity.name}
+                      id={charity.name}
+                      displayName={charity.name}
+                      ratePerKg={charity.ratePerKg}
+                      rateRationale={charity.rateRationale}
+                    />;
+                  })
+                }
               </div>
             </div>
           </div>
