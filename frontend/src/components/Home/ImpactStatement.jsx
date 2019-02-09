@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
 import styles from '../../styles/Home.module.css';
 import CustomModal from './CustomModal';
-import Popup from 'reactjs-popup';
 import OffsetShowcase from './OffsetShowcase';
-import Modal2 from './Modal2';
+import ReductionSuggestions from './ReductionSuggestions';
 import Flexbox from 'flexbox-react';
 
 //amount of resource equivalent to 1 kg carbon emission
@@ -49,7 +47,7 @@ class ImpactStatement extends Component {
         </p>
         <Flexbox>
           <CustomModal buttonName="Reduce Your Emissions" header="">
-            <Modal2 />
+            <ReductionSuggestions />
           </CustomModal>
 
           <CustomModal buttonName="Offset Your Emissions" header="Carbon Offset Charities">

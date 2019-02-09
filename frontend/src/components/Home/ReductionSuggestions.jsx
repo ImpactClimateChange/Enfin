@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from '../../styles/Splash.module.css';
 import { Button } from 'reactstrap';
 
-class Modal extends React.Component {
+class ReductionSuggestions extends Component {
     render() {
       return (
         <div>
@@ -18,4 +18,4 @@ class Modal extends React.Component {
     }
   }
 
-  export default Modal;
+export default ReductionSuggestions;
