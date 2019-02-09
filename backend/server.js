@@ -16,7 +16,7 @@ const PLAID_PRODUCTS = "transactions";
 const PLAID_ENV = "sandbox";
 
 // Helper functions and constants
-const CHARITIES = require("./charities").charities;
+const CHARITIES = require("./charities").CHARITIES;
 const transactions = require("./transactions");
 
 // We store the access_token in memory - in production, store it in a secure
@@ -142,7 +142,21 @@ app.get('/breakdown/:days', function(request, response, next) {
 
 app.get('/charities', function(request, response, next) {
   response.json({error: null, charities: CHARITIES});
-}); 
+});
+
+app.get('/categories', function (request, response, next) {
+  let result = Object.keys(transactions.CATEGORIES).map(catName => {
+    return { 
+      name: catName, 
+      displayName: transactions.CATEGORIES[catName].displayName,
+      conversionFunction: transactions.CATEGORIES[catName].conversionFunction.toString(),
+      conversionRationale: transactions.CATEGORIES[catName].conversionRationale,
+      includeTypes: transactions.CATEGORIES[catName].includeTypes,
+      excludeTypes: transactions.CATEGORIES[catName].excludeTypes,
+    }
+  })
+  response.json({ error: null, categories: result });
+});
 
 const server = app.listen(APP_PORT, function() {
   console.log('plaid-quickstart server listening on port ' + APP_PORT);

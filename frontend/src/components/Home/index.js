@@ -98,6 +98,7 @@ class Home extends Component {
               emissions={this.state.emissions}
               offset={this.state.offsetDonation}
               timeRange={this.state.timeRange}
+              breakdown={this.state.breakdown}
             />
             <div>
               <Progress emissions={this.state.emissions} offset={this.state.offsetDonation} />
