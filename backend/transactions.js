@@ -1,47 +1,60 @@
 const util = require('util');
-const CHARITIES = require('./charities').charities;
-
-// US dollars required to offset 1 kg^2 of CO2
-const CARBON_COST = .00134;
+const CHARITIES = require('./charities').CHARITIES;
 
 const CATEGORIES = {
    "airTravel": {
-      "mult": (9),
+      "displayName": "Air Travel",
+      "conversionFunction": (dollars) => (dollars * (9)),
+      "conversionRationale": "Every dollar spent has an associated carbon cost. Here is the explanation for how we found that conversion with regard to this specific category.",
       "includeTypes": ["Airlines and Aviation Services"],
       "excludeTypes": []
   },
    "carTravel": {
-      "mult": (7),
+      "displayName": "Car Travel",
+      "conversionFunction": (dollars) => (dollars * (7)),
+      "conversionRationale": "Every dollar spent has an associated carbon cost. Here is the explanation for how we found that conversion with regard to this specific category.",
       "includeTypes": ["Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses"],
       "excludeTypes": ["Shops"]
   },
    "utility": {
-      "mult": (7 / 3 / 15),
+      "displayName": "Utilities",
+      "conversionFunction": (dollars) => (dollars * (7 / 3 / 15)),
+      "conversionRationale": "Every dollar spent has an associated carbon cost. Here is the explanation for how we found that conversion with regard to this specific category.",
       "includeTypes": ["Utilities"],
       "excludeTypes": []
   },
    "grocery": {
-      "mult": (7 / 3 / 15),
+      "displayName": "Groceries",
+      "conversionFunction": (dollars) => (dollars * (7 / 3 / 15)),
+      "conversionRationale": "Every dollar spent has an associated carbon cost. Here is the explanation for how we found that conversion with regard to this specific category.",
       "includeTypes": ["Supermarkets and Groceries"],
       "excludeTypes": []
   },
    "fastFood": {
-      "mult": (7 / 3 / 15),
+      "displayName": "Fast Food",
+      "conversionFunction": (dollars) => (dollars * (7 / 3 / 15)),
+      "conversionRationale": "Every dollar spent has an associated carbon cost. Here is the explanation for how we found that conversion with regard to this specific category.",
       "includeTypes": ["Fast Food"],
       "excludeTypes": []
   },
    "resturantOther": {
-      "mult": (7 / 3 / 15),
+      "displayName": "Resturants",
+      "conversionFunction": (dollars) => (dollars * (7 / 3 / 15)),
+      "conversionRationale": "Every dollar spent has an associated carbon cost. Here is the explanation for how we found that conversion with regard to this specific category.",
       "includeTypes": ["Food and Drink"],
       "excludeTypes": ["Fast Food"]
   },
    "shopping": {
-      "mult": (7 / 3 / 15),
+      "displayName": "General Shopping",
+      "conversionFunction": (dollars) => (dollars * (7 / 3 / 15)),
+      "conversionRationale": "Every dollar spent has an associated carbon cost. Here is the explanation for how we found that conversion with regard to this specific category.",
       "includeTypes": ["Shops"],
       "excludeTypes": ["Supermarkets and Groceries"]
   },
   "other": {
-      "mult": (7 / 3 / 15),
+      "displayName": "Other Spending",
+      "conversionFunction": (dollars) => (dollars * (7 / 3 / 15)),
+      "conversionRationale": "Every dollar spent has an associated carbon cost. Here is the explanation for how we found that conversion with regard to this specific category.",
       "includeTypes": ["*"],
       "excludeTypes": ["Environmental","Airlines and Aviation Services", "Gas Stations","Car Service","Limos and Chauffeurs","Charter Buses","Utilities","Supermarkets and Groceries","Fast Food","Food and Drink","Shops","Transfer","Payment"]
   },
@@ -124,7 +137,7 @@ function tallyCategory (transactions, category) {
           }
         }
     )
-    var emissions = CATEGORIES[category]['mult'] * cost;
+    var emissions = CATEGORIES[category].conversionFunction(cost);
     return {
         "cost": cost,
         "emissions": emissions,
@@ -132,4 +145,4 @@ function tallyCategory (transactions, category) {
     };
 }
 
-module.exports = {categorizeTransactions};
+module.exports = {categorizeTransactions, CATEGORIES};

@@ -1,4 +1,4 @@
-const charities = [
+const CHARITIES = [
     {
         name: "Cool Earth",
         ratePerKg: 0.00134,
@@ -37,4 +37,4 @@ const charities = [
     }
 ];
 
-module.exports = {charities};
+module.exports = {CHARITIES};

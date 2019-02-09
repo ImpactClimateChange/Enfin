@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import styles from '../../styles/Splash.module.css';
+import CategoryRationale from './CategoryRationale';
 
 class Research extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      categoryList: []
+    };
+
+    //get information about charities to display
+    window
+      .fetch('/categories')
+      .then(response => response.json())
+      .then(data => this.setState({ categoryList: data.categories }));
+  }
+
   render() {
     return (
       <div className={styles.description}>
@@ -11,12 +25,12 @@ class Research extends Component {
               <h1 className={styles.green}>Methodology & Research</h1>
               <p className={styles.bio}>
                 We believe that the world would be a better place if people have <em>convienent</em>{' '}
-                access to a <em>trustworthy</em> and <em>accurate</em> analysis of their own carbon 
-                footprint. In order to provide analytics that we know users can be confident in, 
-                the team at enfin has undergone a rigorous and expert reviewed research process. 
-                Our code is open source, and our rationale for any economic and environmental calculations
-                are completely transparent. If you are worried about accuracy, 
-                you've come to the right place. 
+                access to a <em>trustworthy</em> and <em>accurate</em> analysis of their own carbon
+                footprint. In order to provide analytics that we know users can be confident in, the
+                team at enfin has undergone a rigorous and expert reviewed research process. Our
+                code is open source, and our rationale for any economic and environmental
+                calculations are completely transparent. If you are worried about accuracy, you've
+                come to the right place.
               </p>
               <ul className={styles.bio}>
                 <span className={styles.under}>Carbon Emission Calculation Sources</span>
@@ -98,57 +112,35 @@ class Research extends Component {
                 generated per dollar spent -- provided that category is narrow enough. See below our
                 conversion rates and rationale for each spending category that we support.
               </p>
-              <div id="Car Travel" className={styles.descriptionInnerInner}>
-                <h4>Car Travel</h4>
-                <div>
-                  <code>The function</code>
-                  <p>The argument and data</p>
-                </div>
-              </div>
-              <div id="Air Travel" className={styles.descriptionInnerInner}>
-                <h4>Air Travel</h4>
-                <div>
-                  <code>The function</code>
-                  <p>The argument and data</p>
-                </div>
-              </div>
-              <div id="Utilities" className={styles.descriptionInnerInner}>
-                <h4>Utilities</h4>
-                <div>
-                  <code>The function</code>
-                  <p>The argument and data</p>
-                </div>
-              </div>
-              <div id="Resturants" className={styles.descriptionInnerInner}>
-                <h4>Resturants</h4>
-                <div>
-                  <code>The function</code>
-                  <p>The argument and data</p>
-                </div>
-              </div>
-              <div id="Grocery" className={styles.descriptionInnerInner}>
-                <h4>Grocery</h4>
-                <div>
-                  <code>The function</code>
-                  <p>The argument and data</p>
-                </div>
+              <div>
+                {
+                  this.state.categoryList.map(category => {
+                    return <CategoryRationale
+                      key={category.name}
+                      id={category.name}
+                      displayName={category.displayName}
+                      conversionFunction={category.conversionFunction}
+                      conversionRationale={category.conversionRationale}
+                    />;
+                  })
+                }
               </div>
             </div>
           </div>
           <div id="OffsetRates" className={styles.descriptionBio}>
             <h2>Offset Charity Carbon Elimination Rates</h2>
             <p className={styles.researchQuestion}>
-              How do we estimate the carbon elimination effectiveness for our approved carbon
-              offset charities?
+              How do we estimate the carbon elimination effectiveness for our approved carbon offset
+              charities?
             </p>
             <div className={styles.bio}>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </p>
               <div id="CoolEarth" className={styles.descriptionInnerInner}>
                 <h4>Cool Earth</h4>
