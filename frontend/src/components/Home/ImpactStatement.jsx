@@ -46,11 +46,11 @@ class ImpactStatement extends Component {
           carbon emissions. <br />
         </p>
         <Flexbox>
-          <CustomModal buttonName="Reduce Your Emissions" header="">
+          <CustomModal buttonName="Reduce Your Emissions">
             <ReductionSuggestions breakdown={this.props.breakdown} />
           </CustomModal>
 
-          <CustomModal buttonName="Offset Your Emissions" header="Carbon Offset Charities">
+          <CustomModal buttonName="Offset Your Emissions">
             <OffsetShowcase />
           </CustomModal>
         </Flexbox>
