@@ -74,9 +74,15 @@
   width: 75%;
   margin-left: 40px;
 }
+
 .descriptionInnerInner {
   display: inline-block;
 }
+
+.descriptionInnerInner h3 {
+  margin: 1em;
+}
+
 .gallery {
   min-height: 1px;
   display: block;
