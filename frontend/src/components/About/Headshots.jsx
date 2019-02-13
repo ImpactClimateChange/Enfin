@@ -8,6 +8,16 @@ class Headshots extends Component {
     return (
       <div>
         <h2>Meet the team</h2>
+        <p className={styles.bio}>
+          The Enfin Team was incubated at the 2019{' '}
+          <a className={styles.italic} href="https://www.impactlabs.io/fellowship">
+            Impact Labs Fellowship
+          </a>
+          . This hackathon style event prompted fellows to create a technological solution to a
+          social good problem. After recognizing our shared passion for climate change reversal and
+          high quality software development, the four of us quickly became loyal friends and
+          efficient teammates. Then, on the morning of {'<'}incorporation date{'>'} we became Enfin.
+        </p>
         <Container fluid style={{ lineHeight: '32px' }}>
           <Row debug>
             <Col debug>
@@ -40,9 +50,10 @@ class Headshots extends Component {
               to do more photography, running, and traveling.
             </Col>
             <Col debug className={styles.bio}>
-              Abe Miller studies computer science and philosophy at UW Seattle. He is passionate
-              about both his own self-growth, and about leveraging the power of modern computing to
-              make a positive impact on society. More than anything else in the world he loves
+              Abe studies computer science and philosophy at UW Seattle. When he isn't writing
+              software to help automate synthetic biology experimentation, you might find him
+              creating small javascript web toys, or ensuring that his essays and articles have a
+              healthy ratio of melodrama and humor. More than anything else in the world he loves
               coffee, patting dogs, and bicycling.
             </Col>
             <Col debug className={styles.bio}>
