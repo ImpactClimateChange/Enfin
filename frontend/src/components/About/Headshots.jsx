@@ -50,11 +50,11 @@ class Headshots extends Component {
               to do more photography, running, and traveling.
             </Col>
             <Col debug className={styles.bio}>
-              Abe studies computer science and philosophy at UW Seattle. When he isn't writing
+              Abe studies computer science and philosophy at UW Seattle. When he's not writing
               software to help automate synthetic biology experimentation, you might find him
-              creating small javascript web toys, or ensuring that his essays and articles have a
-              healthy ratio of melodrama and humor. More than anything else in the world he loves
-              coffee, patting dogs, and bicycling.
+              creating small javascript web toys, or ensuring that his essays have a healthy ratio
+              of melodrama and humor. More than anything else in the world he loves patting dogs,
+              bicycling, and very hot coffee.
             </Col>
             <Col debug className={styles.bio}>
               Isabelle is a senior studying Information/Data Science and French at Cornell
