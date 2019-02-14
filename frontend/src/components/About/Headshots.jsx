@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import styles from '../../styles/Splash.module.css';
-import { Container, Row, Col } from 'reactstrap';
 import IMAGES from '../../images';
-import Flexbox from 'flexbox-react';
 
 class Headshots extends Component {
   render() {
@@ -20,8 +18,8 @@ class Headshots extends Component {
           efficient teammates. Then, on the morning of {'<'}incorporation date{'>'} we became Enfin.
         </p>
         <br />
-        <Flexbox>
-          <div className={styles.descriptionInnerInner}>
+        <div className={styles.flexBoxRowWrap}>
+          <div className={styles.headshotAndBio}>
             <img src={IMAGES.james} width="250px" alt="James" />
             <h3>James Wang</h3>
             <p debug className={styles.bio}>
@@ -32,7 +30,7 @@ class Headshots extends Component {
               to do more photography, running, and traveling.
             </p>
           </div>
-          <div className={styles.descriptionInnerInner}>
+          <div className={styles.headshotAndBio}>
             <img src={IMAGES.abe} width="250px" alt="Abe" />
             <h3>Abe Miller</h3>
             <p debug className={styles.bio}>
@@ -43,7 +41,7 @@ class Headshots extends Component {
               bicycling, and very hot coffee.
             </p>
           </div>
-          <div className={styles.descriptionInnerInner}>
+          <div className={styles.headshotAndBio}>
             <img src={IMAGES.isabelle} width="250px" alt="Isabelle" />
             <h3>Isabelle De Brabanter</h3>
             <p debug className={styles.bio}>
@@ -58,7 +56,7 @@ class Headshots extends Component {
               is.{' '}
             </p>
           </div>
-          <div className={styles.descriptionInnerInner}>
+          <div className={styles.headshotAndBio}>
             <img src={IMAGES.chris} width="250px" alt="Chris" />
             <h3>Chris Hays</h3>
             <p debug className={styles.bio}>
@@ -68,7 +66,7 @@ class Headshots extends Component {
               and James Joyce) and exploring new cities (most recently Minneapolis and Chicago).
             </p>
           </div>
-        </Flexbox>
+        </div>
       </div>
     );
   }

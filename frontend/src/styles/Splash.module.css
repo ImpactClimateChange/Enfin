@@ -61,6 +61,7 @@
 .bio {
   text-align: left;
 }
+
 .under {
   text-decoration: underline;
   text-align: left;
@@ -81,6 +82,11 @@
 
 .descriptionInnerInner h3 {
   margin: 1em;
+}
+
+.headshotAndBio {
+  width: 250px;
+  margin: 20px;
 }
 
 .gallery {
@@ -126,4 +132,10 @@
 .researchQuestion {
   color: cadetblue;
   font-style: italic;
+}
+
+.flexBoxRowWrap {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
