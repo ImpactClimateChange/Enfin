@@ -38,12 +38,9 @@ class Home extends Component {
   }
 
   getBreakdown(timeRange) {
-    console.log(this.state.responseCache, timeRange.toString());
     if (this.state.responseCache[timeRange.toString()]) {
-      console.log('1');
       this.stateUpdateFromData(this.state.responseCache[timeRange.toString()], timeRange);
     } else {
-      console.log('2');
       window
         .fetch('/breakdown/' + timeRange.toString())
         .then(response => response.json())
@@ -56,7 +53,6 @@ class Home extends Component {
   }
 
   stateUpdateFromData(data, timeRange) {
-    console.log('stateupdate!')
     const emissions = data['emission'];
     const cost = data['cost'];
     const breakdown = data['breakdown'];

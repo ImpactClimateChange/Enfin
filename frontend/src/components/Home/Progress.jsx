@@ -37,8 +37,6 @@ class Progess extends Component {
       emissionsKgDisplay: 0,
       offsetKgDisplay: 0
     };
-    console.log("Will recieve props! ")
-    console.log(this.state)
     this.emissionsIncrease();
     this.offsetIncrease();
   }
