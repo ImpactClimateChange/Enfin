@@ -23,7 +23,7 @@ class Mission extends Component {
                 <em>
                   Unimpoversished people in developed countries are the biggest economic consumers{' '}
                   {'<'}citation needed{'>'}, and thus indirectly cause the most greenhouse gas
-                  emissions.{' '}
+                  emissions.{'<'}https://ourworldindata.org/co2-by-income-region{'>'}
                 </em>
               </li>
               <li>

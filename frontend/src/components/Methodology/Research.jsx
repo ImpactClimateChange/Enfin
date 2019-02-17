@@ -96,6 +96,13 @@ class Research extends Component {
                     DOE EIA Fuel Oil and Kerosene Sales 2014
                   </a>
                 </li>
+                <li>
+                  <a
+                    className={styles.italic} 
+                    href="https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions">
+                    ourworldindata
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
