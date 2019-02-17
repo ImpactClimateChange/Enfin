@@ -15,7 +15,6 @@ class Progess extends Component {
       offsetPercent: 0,
       emissionsKgDisplay: 0,
       offsetKgDisplay: 0,
-      color: 'red'
     };
     this.emissionsIncrease = this.emissionsIncrease.bind(this);
     this.offsetIncrease = this.offsetIncrease.bind(this);
@@ -27,12 +26,19 @@ class Progess extends Component {
   }
 
   componentWillReceiveProps() {
-    this.setState({
+    // setting state without setState() 
+    // because the asyc state change
+    // does not update the state fast  
+    // enough for the base case check
+    // inside emissionsIncrease
+    this.state = {
       emissionsPercent: 0,
       offsetPercent: 0,
       emissionsKgDisplay: 0,
       offsetKgDisplay: 0
-    });
+    };
+    console.log("Will recieve props! ")
+    console.log(this.state)
     this.emissionsIncrease();
     this.offsetIncrease();
   }
@@ -42,8 +48,8 @@ class Progess extends Component {
     var emissionsKgDisplay = Math.floor(
       (this.state.emissionsPercent * (this.props.emissions + this.props.offset)) / 100
     );
-    const pct = (this.props.emissions / (this.props.emissions + this.props.offset)) * 100;
-    if (emissionsPercent >= pct) {
+    const percentTarget = (this.props.emissions / (this.props.emissions + this.props.offset)) * 100;
+    if (emissionsPercent >= percentTarget) { // base case - 
       emissionsKgDisplay = Math.round(this.props.emissions);
       this.setState({ emissionsKgDisplay });
       clearTimeout(this.tm);

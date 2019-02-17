@@ -56,6 +56,7 @@ class Home extends Component {
   }
 
   stateUpdateFromData(data, timeRange) {
+    console.log('stateupdate!')
     const emissions = data['emission'];
     const cost = data['cost'];
     const breakdown = data['breakdown'];
