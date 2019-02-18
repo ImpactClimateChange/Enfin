@@ -1,5 +1,5 @@
 {
-  "name": "drawchange",
+  "name": "enfin",
   "description": "a really cool app",
   "version": "1.0.0",
   "cacheDirectories": [
@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "start": "concurrently \"cd backend/ && npm start\" \"cd frontend/ && npm start\"",
+    "deploy": "concurrently \"cd backend/ && npm run deploy\" \"cd frontend/ && npm run deploy\"",
     "install-frontend": "yarn install --cwd frontend",
     "install-backend": "yarn install --cwd backend",
     "build-frontend": "cd frontend/ && yarn build",
