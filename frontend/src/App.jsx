@@ -18,8 +18,9 @@ class App extends Component {
   fakeLogout = _ => this.setState({ user: null });
 
   render() {
+    console.log("Your process.env.PUBLIC_URL: " + process.env.PUBLIC_URL);
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div>
           <Header onAuth={this.fakeAuth} logout={this.fakeLogout} user={this.state.user} />
           <Route

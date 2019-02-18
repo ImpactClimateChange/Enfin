@@ -77,4 +77,5 @@ public/*.js
 public/bundle.js
 
 .DS_Store
-frontend/build
+
+frontend/build/*
