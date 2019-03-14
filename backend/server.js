@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const moment = require('moment');
 const plaid = require('plaid');
+const path = require('path');
 
 // Plaid sandbox environment setup
 const APP_PORT = "8000";
@@ -37,19 +38,17 @@ const client = new plaid.Client(
 
 const app = express();
 app.use(express.static('public'));
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({
-  extended: false,
-}));
-app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-app.get('/', function(request, response, next) {
-  response.render('index.ejs', {
+app.get('/', function (request, response, next) {
+  const options = {
     PLAID_PUBLIC_KEY: PLAID_PUBLIC_KEY,
     PLAID_ENV: PLAID_ENV,
     PLAID_PRODUCTS: PLAID_PRODUCTS,
-  });
+  };
+  response.sendFile(path.join(__dirname, '../frontend/build/index.html'), options);
 });
+
 
 // Exchange token flow - exchange a Link public_token for
 // an API access_token

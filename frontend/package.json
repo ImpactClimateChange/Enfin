@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "license": "MIT",
   "proxy": "http://localhost:8000",
-  "homepage": "https://impactclimatechange.github.io/Enfin/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
