@@ -22,18 +22,22 @@ class Header extends Component {
   };
 
   handleOnSuccess = (token, metadata) => {
-    this.props.onAuth();
+    this.props.onAuth(token);
   };
+
   handleOnExit(error, metadata) {
     console.log('link: user exited');
     console.log(error, metadata);
-  }
+  };
+
   handleOnLoad() {
     console.log('link: loaded');
-  }
+  };
+
   handleOnEvent(eventname, metadata) {
     console.log('link: user event', eventname, metadata);
-  }
+  };
+  
   render() {
     console.log(this.props);
     return (

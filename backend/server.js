@@ -73,6 +73,16 @@ app.post('/get_access_token', function(request, response, next) {
   });
 });
 
+app.post('/set_access_token', function (request, response, next) {
+  ACCESS_TOKEN = request.body.access_token;
+  client.getItem(ACCESS_TOKEN, function (error, itemResponse) {
+    response.json({
+      item_id: itemResponse.item.item_id,
+      error: false,
+    });
+  });
+});
+
 // Retrieve Transactions for an Item
 // https://plaid.com/docs/#transactions
 app.get('/transactions', function(request, response, next) {
@@ -164,13 +174,3 @@ const server = app.listen(APP_PORT, function() {
 const prettyPrintResponse = response => {
   console.log(util.inspect(response, {colors: true, depth: 4}));
 };
-
-app.post('/set_access_token', function(request, response, next) {
-  ACCESS_TOKEN = request.body.access_token;
-  client.getItem(ACCESS_TOKEN, function(error, itemResponse) {
-    response.json({
-      item_id: itemResponse.item.item_id,
-      error: false,
-    });
-  });
-});
