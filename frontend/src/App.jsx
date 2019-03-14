@@ -30,7 +30,8 @@ class App extends Component {
       body: JSON.stringify({public_token: public_token}), // data can be `string` or {object}!
     })
     .then(function (data) {
-      console.log("access token response: ",data)
+      console.log("access token response: ");
+      console.log(data);
     });
     this.setState({ user: { role: 'admin' } });
   }
