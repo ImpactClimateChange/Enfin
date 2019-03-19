@@ -1,15 +1,11 @@
 {
-  "name": "ClimateChangers",
+  "name": "enfin-back",
   "version": "1.0.0",
-  "description": "an example for deploying a React + NodeJS app to Heroku",
+  "description": "Nodejs server which responds to queries and serves a frontend react app",
   "main": "server.js",
   "scripts": {
-    "build": "webpack --config webpack.prod.config.js",
-    "dev": "concurrently -k \"npm run frontend\" \"npm run backend\"",
-    "frontend": "webpack -d --watch",
-    "backend": "nodemon server.js",
-    "start": "node server.js",
-    "test": "mocha --compilers js:babel-core/register ./test/**/*.js --require ignore-styles"
+    "start": "nodemon server.js",
+    "deploy": "node server.js"
   },
   "author": "",
   "license": "ISC",
