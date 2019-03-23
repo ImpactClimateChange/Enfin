@@ -17,27 +17,30 @@ class App extends Component {
 
   fakeLogout = _ => this.setState({ user: null });
 
-  // STUCK HERE post request is failing. The body of the post request is undefined
-  // according to the server.
+  // exchange plaid public token for access token and item id,
+  // allowing all future plaid requests to authenticate.
+  // TODO if the access token already exists, then use /set_access_token
   auth = (public_token) => {
-    console.log('public token', public_token)
+    // apparently all you have to do to get the requests to authenticate is 
+    // accept the response and call .json() on it without storing it. What?
     window
-    .fetch('/get_access_token', {
-      method: 'post', // or 'PUT'
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({public_token: public_token}), // data can be `string` or {object}!
-    })
-    .then(function (data) {
-      console.log("access token response: ");
-      console.log(data);
-    });
-    this.setState({ user: { role: 'admin' } });
+      .fetch('/get_access_token', {
+        method: 'post', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({public_token: public_token}), // data can be `string` or {object}!
+      })
+      .then((response) => {
+        this.setState({ user: { role: 'admin' } });
+        response.json();
+      }).catch((error) => {
+        console.log("big bad")
+      })
+      this.setState({ user: { role: 'loading' }})
   }
 
   render() {
-    console.log("Your process.env.PUBLIC_URL: " + process.env.PUBLIC_URL);
     return (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div>

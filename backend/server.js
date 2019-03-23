@@ -58,6 +58,7 @@ app.get('/', function (request, response, next) {
 // https://plaid.com/docs/#exchange-token-flow
 app.post('/get_access_token', function(request, response, next) {
   PUBLIC_TOKEN = request.body.public_token;
+  console.log(PUBLIC_TOKEN);
   client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
     if (error != null) {
       prettyPrintResponse(error);

@@ -39,7 +39,6 @@ class Header extends Component {
   };
   
   render() {
-    console.log(this.props);
     return (
       <div>
         <Navbar color="white" expand="md">
@@ -65,7 +64,7 @@ class Header extends Component {
                     clientName="Plaid Client"
                     env="sandbox"
                     product={['auth', 'transactions']}
-                    publicKey="614be98f819e9bd8d0db9abec1c08a"
+                    publicKey="dc14e823249a9b78995fc65b53f0c6"
                     className="some-class-name"
                     apiVersion="v2"
                     onSuccess={this.handleOnSuccess}
