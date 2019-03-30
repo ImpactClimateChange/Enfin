@@ -11,10 +11,10 @@ const path = require('path');
 // Plaid sandbox environment setup
 const APP_PORT = "8000";
 const PLAID_CLIENT_ID = "5c37cedb48339d0011601acf";
-const PLAID_SECRET = "ba3a91b90aba2368be1422d4a89128";
+const PLAID_SECRET = "a1f4cf566ee8f90a1baedca2157532";
 const PLAID_PUBLIC_KEY = "dc14e823249a9b78995fc65b53f0c6";
 const PLAID_PRODUCTS = "transactions";
-const PLAID_ENV = "sandbox";
+const PLAID_ENV = "development";
 
 // Helper functions and constants
 const CHARITIES = require("./charities").CHARITIES;

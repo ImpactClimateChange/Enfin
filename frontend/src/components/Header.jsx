@@ -62,7 +62,7 @@ class Header extends Component {
                 ) : (
                   <PlaidLink
                     clientName="Plaid Client"
-                    env="sandbox"
+                    env="development"
                     product={['auth', 'transactions']}
                     publicKey="dc14e823249a9b78995fc65b53f0c6"
                     className="some-class-name"
