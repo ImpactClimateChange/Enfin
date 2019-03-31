@@ -37,7 +37,7 @@ class App extends Component {
       }).catch((error) => {
         console.log("big bad")
       })
-      this.setState({ user: { role: 'loading' }})
+      this.setState({ user: { role: 'authenticating' }})
   }
 
   render() {
