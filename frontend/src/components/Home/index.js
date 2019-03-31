@@ -44,8 +44,15 @@ class Home extends Component {
       this.setState(Object.assign(this.state, { loading: true }));
       window
         .fetch('/breakdown/' + timeRange.toString())
-        .then(response => response.json())
-        .then(data => this.stateUpdateFromData(data, timeRange));
+        .then(response => {
+          console.log('Retrieved data!');
+          console.log(response);
+          return response.json()
+        })
+        .then(data => {
+          console.log(data);
+          this.stateUpdateFromData(data, timeRange)
+        });
     }
   }
 
@@ -75,49 +82,43 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    console.log("Attempting to fetch financial data");
     this.getBreakdown(this.state.timeRange);
   }
+
   render() {
-    if (this.state.loading) {
-      return (
-        <div>
-          <h1>LOADING</h1>
+    var data = this.state.breakdown
+      ? Object.keys(this.state.breakdown)
+          .filter(category => category !== 'offsetDonation')
+          .map(category => {
+            return [SHOW_NAME[category], this.state.breakdown[category]['emissions']];
+          })
+      : [];
+
+    return ( this.state.loading ? <h1>Getting your data...</h1> :
+      <div>
+        <div className={styles.timeRange}>
+          <TimeRange getBreakdown={this.getBreakdown} />
         </div>
-      );
-    } else {
-      var data = this.state.breakdown
-        ? Object.keys(this.state.breakdown)
-            .filter(category => category !== 'offsetDonation')
-            .map(category => {
-              return [SHOW_NAME[category], this.state.breakdown[category]['emissions']];
-            })
-        : [];
 
-      return (
-        <div>
-          <div className={styles.timeRange}>
-            <TimeRange getBreakdown={this.getBreakdown} />
-          </div>
-
-          <div />
-          <Flexbox minHeight="100vh" justifyContent="space-around">
-            <MyPie data={data} />
-            <div style={{ width: '43%' }}>
-              <ImpactStatement
-                emissions={this.state.emissions}
-                offset={this.state.offsetDonation}
-                timeRange={this.state.timeRange}
-                breakdown={this.state.breakdown}
-              />
-              <div>
-                <Progress emissions={this.state.emissions} offset={this.state.offsetDonation} />
-              </div>
+        <div />
+        <Flexbox minHeight="100vh" justifyContent="space-around">
+          <MyPie data={data} />
+          <div style={{ width: '43%' }}>
+            <ImpactStatement
+              emissions={this.state.emissions}
+              offset={this.state.offsetDonation}
+              timeRange={this.state.timeRange}
+              breakdown={this.state.breakdown}
+            />
+            <div>
+              <Progress emissions={this.state.emissions} offset={this.state.offsetDonation} />
             </div>
-          </Flexbox>
-          <Footer />
-        </div>
-      );
-    }
+          </div>
+        </Flexbox>
+        <Footer />
+      </div>
+    );
   }
 }
 

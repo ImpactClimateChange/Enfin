@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Header, Splash, Home, About, Methodology } from './components';
+import { Header, Splash, Home, About, Methodology, Loading } from './components';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
     };
   }
   componentWillMount(props) {
     // check url for user id
   }
 
-  fakeAuth = _ => this.setState({ user: { role: 'admin' } });
+  fakeAuth = _ => this.setState({ user: { role: 'customer' } });
 
   fakeLogout = _ => this.setState({ user: null });
 
@@ -31,16 +31,30 @@ class App extends Component {
         },
         body: JSON.stringify({public_token: public_token}), // data can be `string` or {object}!
       })
-      .then((response) => {
-        this.setState({ user: { role: 'admin' } });
-        response.json();
-      }).catch((error) => {
-        console.log("big bad")
+      .then((response) => response.json())
+      .then((tokenData) => {
+        this.setState({ user: { role: 'customer', tokenData: tokenData } });
+        console.log("Authenticated with plaid successfully")
+        console.log(tokenData);
+      })
+      .catch((error) => {
+        console.log("big bad, authentication failed")
       })
       this.setState({ user: { role: 'authenticating' }})
   }
 
   render() {
+    let mainDisplayComponent = Splash;
+    let authed = false;
+    if (this.state.user) {
+      if (this.state.user.role === "customer") {
+        authed = true;
+        mainDisplayComponent = Home;
+      } else if (this.state.user.role === "authenticating") {
+        mainDisplayComponent = Loading;
+      }
+    }
+
     return (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div>
@@ -48,7 +62,8 @@ class App extends Component {
           <Route
             exact
             path="/"
-            component={this.state.user ? Home : Splash}
+            component={mainDisplayComponent}
+            render={() => <mainDisplayComponent isAuthed={authed} />}
             user={this.state.user}
           />
           <Route exact path="/about" component={About} />
