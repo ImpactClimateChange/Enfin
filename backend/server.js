@@ -9,7 +9,7 @@ const plaid = require('plaid');
 const path = require('path');
 
 // Plaid sandbox environment setup
-const APP_PORT = "8000";
+const APP_PORT = process.env.PORT || "8000";
 const PLAID_CLIENT_ID = "5c37cedb48339d0011601acf";
 const PLAID_SECRET = "a1f4cf566ee8f90a1baedca2157532";
 const PLAID_PUBLIC_KEY = "dc14e823249a9b78995fc65b53f0c6";
