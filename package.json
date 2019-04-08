@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "start": "concurrently \"cd backend/ && npm start\" \"cd frontend/ && npm start\"",
-    "install": "cd frontend/ && npm install & cd backend/ && npm install",
+    "install": "cd frontend/ && npm run build & cd backend/ && npm install",
     "deploy": "cd frontend/ && npm run build & cd backend/ && npm run deploy"
   },
   "engines": {
