@@ -10,21 +10,21 @@ import Footer from '../Splash/Footer';
 // import Modal from './Modal';
 
 const SHOW_NAME = {
-  "airTravel": "Air Travel",
-  "carTravel": "Car Travel",
-  "utility": "Utilities",
-  "grocery": "Groceries",
-  "fastFood": "Fast Food",
-  "resturantOther": "Resturants",
-  "shopping": "Shopping",
-  "other": "Other",
-}
-
+  airTravel: 'Air Travel',
+  carTravel: 'Car Travel',
+  utility: 'Utilities',
+  grocery: 'Groceries',
+  fastFood: 'Fast Food',
+  resturantOther: 'Resturants',
+  shopping: 'Shopping',
+  other: 'Other'
+};
 
 class Home extends Component {
   constructor() {
     super();
     this.state = {
+      loading: true,
       emissions: 0,
       cost: 0,
       offsetDonation: 0,
@@ -41,10 +41,18 @@ class Home extends Component {
     if (this.state.responseCache[timeRange.toString()]) {
       this.stateUpdateFromData(this.state.responseCache[timeRange.toString()], timeRange);
     } else {
+      this.setState(Object.assign(this.state, { loading: true }));
       window
         .fetch('/breakdown/' + timeRange.toString())
-        .then(response => response.json())
-        .then(data => this.stateUpdateFromData(data, timeRange));
+        .then(response => {
+          console.log('Retrieved data!');
+          console.log(response);
+          return response.json()
+        })
+        .then(data => {
+          console.log(data);
+          this.stateUpdateFromData(data, timeRange)
+        });
     }
   }
 
@@ -53,6 +61,7 @@ class Home extends Component {
   }
 
   stateUpdateFromData(data, timeRange) {
+    const loading = false;
     const emissions = data['emission'];
     const cost = data['cost'];
     const breakdown = data['breakdown'];
@@ -61,6 +70,7 @@ class Home extends Component {
       responseCache[timeRange.toString()] = data;
       const offsetDonation = breakdown['offsetDonation']['cost'];
       this.setState({
+        loading,
         responseCache,
         emissions,
         cost,
@@ -72,16 +82,20 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    console.log("Attempting to fetch financial data");
     this.getBreakdown(this.state.timeRange);
   }
+
   render() {
     var data = this.state.breakdown
-      ? Object.keys(this.state.breakdown).filter(category => category !== 'offsetDonation').map(category => {
-          return [SHOW_NAME[category], this.state.breakdown[category]['emissions']];
-        })
+      ? Object.keys(this.state.breakdown)
+          .filter(category => category !== 'offsetDonation')
+          .map(category => {
+            return [SHOW_NAME[category], this.state.breakdown[category]['emissions']];
+          })
       : [];
 
-    return (
+    return ( this.state.loading ? <h1>Getting your data...</h1> :
       <div>
         <div className={styles.timeRange}>
           <TimeRange getBreakdown={this.getBreakdown} />

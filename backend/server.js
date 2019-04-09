@@ -6,14 +6,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const moment = require('moment');
 const plaid = require('plaid');
+const path = require('path');
 
 // Plaid sandbox environment setup
-const APP_PORT = "8000";
+const APP_PORT = process.env.PORT || "8000";
 const PLAID_CLIENT_ID = "5c37cedb48339d0011601acf";
-const PLAID_SECRET = "ba3a91b90aba2368be1422d4a89128";
+const PLAID_SECRET = "a1f4cf566ee8f90a1baedca2157532";
 const PLAID_PUBLIC_KEY = "dc14e823249a9b78995fc65b53f0c6";
 const PLAID_PRODUCTS = "transactions";
-const PLAID_ENV = "sandbox";
+const PLAID_ENV = "development";
 
 // Helper functions and constants
 const CHARITIES = require("./charities").CHARITIES;
@@ -36,26 +37,28 @@ const client = new plaid.Client(
 );
 
 const app = express();
-app.use(express.static('public'));
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({
-  extended: false,
-}));
-app.use(bodyParser.json());
 
-app.get('/', function(request, response, next) {
-  response.render('index.ejs', {
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+app.get('/', function (request, response, next) {
+  const options = {
     PLAID_PUBLIC_KEY: PLAID_PUBLIC_KEY,
     PLAID_ENV: PLAID_ENV,
     PLAID_PRODUCTS: PLAID_PRODUCTS,
-  });
+  };
+  response.sendFile(path.join(__dirname, '../frontend/build/index.html'), options);
 });
+
 
 // Exchange token flow - exchange a Link public_token for
 // an API access_token
 // https://plaid.com/docs/#exchange-token-flow
 app.post('/get_access_token', function(request, response, next) {
   PUBLIC_TOKEN = request.body.public_token;
+  console.log(PUBLIC_TOKEN);
   client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
     if (error != null) {
       prettyPrintResponse(error);
@@ -70,6 +73,16 @@ app.post('/get_access_token', function(request, response, next) {
       access_token: ACCESS_TOKEN,
       item_id: ITEM_ID,
       error: null,
+    });
+  });
+});
+
+app.post('/set_access_token', function (request, response, next) {
+  ACCESS_TOKEN = request.body.access_token;
+  client.getItem(ACCESS_TOKEN, function (error, itemResponse) {
+    response.json({
+      item_id: itemResponse.item.item_id,
+      error: false,
     });
   });
 });
@@ -165,13 +178,3 @@ const server = app.listen(APP_PORT, function() {
 const prettyPrintResponse = response => {
   console.log(util.inspect(response, {colors: true, depth: 4}));
 };
-
-app.post('/set_access_token', function(request, response, next) {
-  ACCESS_TOKEN = request.body.access_token;
-  client.getItem(ACCESS_TOKEN, function(error, itemResponse) {
-    response.json({
-      item_id: itemResponse.item.item_id,
-      error: false,
-    });
-  });
-});

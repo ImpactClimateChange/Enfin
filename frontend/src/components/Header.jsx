@@ -22,20 +22,23 @@ class Header extends Component {
   };
 
   handleOnSuccess = (token, metadata) => {
-    this.props.onAuth();
+    this.props.onAuth(token);
   };
+
   handleOnExit(error, metadata) {
     console.log('link: user exited');
     console.log(error, metadata);
-  }
+  };
+
   handleOnLoad() {
     console.log('link: loaded');
-  }
+  };
+
   handleOnEvent(eventname, metadata) {
     console.log('link: user event', eventname, metadata);
-  }
+  };
+  
   render() {
-    console.log(this.props);
     return (
       <div>
         <Navbar color="white" expand="md">
@@ -46,10 +49,14 @@ class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className={styles.navItem}>
-                <NavLink tag={Link} to="/about">ABOUT</NavLink>
+                <NavLink tag={Link} to="/about">
+                  ABOUT
+                </NavLink>
               </NavItem>
               <NavItem className={styles.navItem}>
-                <NavLink tag={Link} to="/methodology">METHODOLOGY</NavLink>
+                <NavLink tag={Link} to="/methodology">
+                  METHODOLOGY
+                </NavLink>
               </NavItem>
               <NavItem className={styles.navItem}>
                 {this.props.user ? (
@@ -59,9 +66,9 @@ class Header extends Component {
                 ) : (
                   <PlaidLink
                     clientName="Plaid Client"
-                    env="sandbox"
+                    env="development"
                     product={['auth', 'transactions']}
-                    publicKey="614be98f819e9bd8d0db9abec1c08a"
+                    publicKey="dc14e823249a9b78995fc65b53f0c6"
                     className="some-class-name"
                     apiVersion="v2"
                     onSuccess={this.handleOnSuccess}
@@ -71,7 +78,7 @@ class Header extends Component {
                     style={{ border: '0px' }}
                   >
                     <Button outline color="primary">
-                      SIGN IN
+                      SIGN IN WITH YOUR BANK
                     </Button>
                   </PlaidLink>
                 )}
