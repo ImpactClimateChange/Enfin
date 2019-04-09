@@ -35,7 +35,7 @@ class Research extends Component {
                 We believe that the world would be a better place if people have <em>convienent</em>{' '}
                 access to a <em>trustworthy</em> and <em>accurate</em> analysis of their own carbon
                 footprint. In order to provide analytics that we know users can be confident in, the
-                team at enfin has undergone a rigorous and expert reviewed research process. Our
+                team at enfin has undergone a rigorous research process. Our
                 code is open source, and our rationale for any economic and environmental
                 calculations are completely transparent. If you are worried about accuracy, you've
                 come to the right place.
