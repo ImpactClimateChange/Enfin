@@ -78,7 +78,7 @@ class Header extends Component {
                     style={{ border: '0px' }}
                   >
                     <Button outline color="primary">
-                      SIGN IN WITH BANK
+                      SIGN IN WITH YOUR BANK
                     </Button>
                   </PlaidLink>
                 )}
