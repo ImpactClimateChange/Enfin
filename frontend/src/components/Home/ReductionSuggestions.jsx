@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import styles from '../../styles/Splash.module.css';
-import { Button } from 'reactstrap';
 
 class ReductionSuggestions extends Component {
     render() {
       return (
         <div>
-        <h2>Reduce your Carbon Emissions</h2>
+        <h2>Reduce your Carbon Emissions (PLACEHOLDER COMPONENT)</h2>
         <p>
           {JSON.stringify(this.props.breakdown)}
         </p>
