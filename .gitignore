@@ -47,6 +47,7 @@ jspm_packages/
 package-lock.json
 frontend/package-lock.json
 backend/package-lock.json
+yarn.lock
 
 # Typescript v1 declaration files
 typings/
@@ -79,4 +80,3 @@ public/bundle.js
 .DS_Store
 
 frontend/build/*
-yarn.lock
