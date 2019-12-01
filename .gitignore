@@ -79,3 +79,4 @@ public/bundle.js
 .DS_Store
 
 frontend/build/*
+yarn.lock
