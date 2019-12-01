@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import styles from '../../styles/Splash.module.css';
-import { Button } from 'reactstrap';
-
 
 class Intro extends Component {
   render() {
