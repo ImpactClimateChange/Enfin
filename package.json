@@ -8,11 +8,11 @@
   ],
   "scripts": {
     "start": "concurrently \"cd backend/ && npm start\" \"cd frontend/ && npm start\"",
-    "install": "cd frontend/ && npm run build & cd backend/ && npm install",
+    "install": "cd frontend/ && npm install & cd backend/ && npm install",
+    "build": "cd frontend/ && npm run build",
     "deploy": "cd backend/ && npm run deploy"
   },
   "engines": {
-    "yarn": "1.12.3",
     "node": "10.14.2"
   },
   "devDependencies": {

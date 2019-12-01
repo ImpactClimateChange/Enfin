@@ -1,5 +1,6 @@
 'use strict';
 
+// External library imports
 const util = require('util');
 const envvar = require('envvar');
 const express = require('express');
@@ -17,6 +18,7 @@ const PLAID_PRODUCTS = "transactions";
 const PLAID_ENV = "development";
 
 // Helper functions and constants
+const FRONTEND_DIR = "../frontend/build/";
 const CHARITIES = require("./charities").CHARITIES;
 const transactions = require("./transactions");
 
@@ -41,7 +43,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(__dirname, FRONTEND_DIR)));
 
 app.get('/', function (request, response, next) {
   const options = {
@@ -49,7 +51,7 @@ app.get('/', function (request, response, next) {
     PLAID_ENV: PLAID_ENV,
     PLAID_PRODUCTS: PLAID_PRODUCTS,
   };
-  response.sendFile(path.join(__dirname, '../frontend/build/index.html'), options);
+  response.sendFile(path.join(__dirname, FRONTEND_DIR + 'index.html'), options);
 });
 
 
@@ -172,7 +174,7 @@ app.get('/categories', function (request, response, next) {
 });
 
 const server = app.listen(APP_PORT, function() {
-  console.log('plaid-quickstart server listening on port ' + APP_PORT);
+  console.log('enfin backend server listening on port ' + APP_PORT);
 });
 
 const prettyPrintResponse = response => {
