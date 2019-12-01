@@ -41,13 +41,14 @@ public/*.json
 public/*.js
 public/bundle.js
 
+frontend/build/*
+
 # Dependency directories
 node_modules
 jspm_packages/
 package-lock.json
 frontend/package-lock.json
 backend/package-lock.json
-yarn.lock
 
 # Typescript v1 declaration files
 typings/
@@ -78,5 +79,3 @@ public/*.js
 public/bundle.js
 
 .DS_Store
-
-frontend/build/*
