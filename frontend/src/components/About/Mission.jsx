@@ -8,22 +8,23 @@ class Mission extends Component {
         <div className={styles.descriptionBio}>
           <h2>Our Mission</h2>
           <p className={styles.bio}>
-            Starting out, we knew we wanted to apply technology to the issue of climate change.
-            Early in our research process we made some stark realizations:
+            We knew we wanted to apply technology to the issue of climate change.
+            While researching how we could do this most effectively, 
+            we made some stark realizations about carbon emissions:
           </p>
           <p className={styles.bio}>
             <ul>
               <li>
                 <em>
                   All significant man-made greenhouse gas emissions can be causally traced back to
-                  economic demand created by end consumers. {'<'}citation needed{'>'}
+                  economic demand created by end consumers. {/*{'<'}citation needed{'>'}*/}
                 </em>{' '}
               </li>
               <li>
                 <em>
                   Unimpoversished people in developed countries are the biggest economic consumers{' '}
-                  {'<'}citation needed{'>'}, and thus indirectly cause the most greenhouse gas
-                  emissions.{'<'}https://ourworldindata.org/co2-by-income-region{'>'}
+                  {/*{'<'}citation needed{'>'}*/}, and thus indirectly cause the most greenhouse gas
+                  emissions. {/*{'<'}https://ourworldindata.org/co2-by-income-region{'>'}*/}
                 </em>
               </li>
               <li>
@@ -37,9 +38,9 @@ class Mission extends Component {
                   People from this demographic are unlikely to understand what decisions they make
                   on a day to day basis most significantly contribute to their carbon footprint.
                 </em>
-                {'<'}citation needed: facts about environmental red herrings reusable grocery store
+                {/*{'<'}citation needed: facts about environmental red herrings reusable grocery store
                 bags, organic food, gmos
-                {'>'}
+                {'>'}*/}
               </li>
             </ul>
             This gap between concern and knowledge with regard to individual environmental impact
